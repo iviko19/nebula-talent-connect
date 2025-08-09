@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Nebula Design System - Cosmic Theme
+All colors are HSL for maximum flexibility and theming support.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Cosmic Background Colors */
+    --background: 228 85% 7%;  /* Deep space blue */
+    --foreground: 210 50% 90%; /* Soft white */
+    
+    /* Surface Colors */
+    --card: 228 85% 9%;        /* Slightly lighter than background */
+    --card-foreground: 210 50% 90%;
+    
+    --popover: 228 85% 9%;
+    --popover-foreground: 210 50% 90%;
+    
+    /* Primary - Nebula Cyan */
+    --primary: 190 100% 60%;   /* Bright cyan */
+    --primary-foreground: 228 85% 7%;
+    
+    /* Secondary - Deep Purple */
+    --secondary: 268 80% 20%;  /* Deep purple */
+    --secondary-foreground: 210 50% 90%;
+    
+    /* Muted Surfaces */
+    --muted: 228 50% 15%;      /* Darker blue-gray */
+    --muted-foreground: 210 30% 70%;
+    
+    /* Accent - Electric Purple */
+    --accent: 280 100% 70%;    /* Bright purple */
+    --accent-foreground: 228 85% 7%;
+    
+    /* Destructive */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 210 50% 90%;
+    
+    /* Borders and Inputs */
+    --border: 228 50% 25%;     /* Subtle cosmic border */
+    --input: 228 60% 15%;      /* Dark input background */
+    --ring: 190 100% 60%;      /* Primary cyan for focus */
+    
+    /* Design tokens */
+    --radius: 0.75rem;
+    
+    /* Cosmic Gradients */
+    --gradient-nebula: linear-gradient(135deg, hsl(280 100% 70%) 0%, hsl(190 100% 60%) 100%);
+    --gradient-cosmic: linear-gradient(90deg, hsl(268 80% 20%) 0%, hsl(228 85% 9%) 50%, hsl(280 100% 70%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(190 100% 60% / 0.3) 0%, transparent 70%);
+    
+    /* Glow Effects */
+    --glow-primary: 0 0 20px hsl(190 100% 60% / 0.5);
+    --glow-accent: 0 0 20px hsl(280 100% 70% / 0.5);
+    --glow-soft: 0 0 40px hsl(190 100% 60% / 0.2);
+    
+    /* Animation Durations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -55,42 +78,44 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  .light {
+    /* Light mode - Inverted cosmic theme for accessibility */
+    --background: 210 50% 98%;
+    --foreground: 228 85% 15%;
+    
+    --card: 210 50% 95%;
+    --card-foreground: 228 85% 15%;
+    
+    --popover: 210 50% 95%;
+    --popover-foreground: 228 85% 15%;
+    
+    --primary: 190 100% 40%;
+    --primary-foreground: 210 50% 98%;
+    
+    --secondary: 268 60% 85%;
+    --secondary-foreground: 228 85% 15%;
+    
+    --muted: 210 30% 90%;
+    --muted-foreground: 228 40% 40%;
+    
+    --accent: 280 80% 50%;
+    --accent-foreground: 210 50% 98%;
+    
+    --destructive: 0 85% 50%;
+    --destructive-foreground: 210 50% 98%;
+    
+    --border: 210 30% 85%;
+    --input: 210 30% 92%;
+    --ring: 190 100% 40%;
+    
+    /* Adjusted gradients for light mode */
+    --gradient-nebula: linear-gradient(135deg, hsl(280 80% 60%) 0%, hsl(190 80% 50%) 100%);
+    --gradient-cosmic: linear-gradient(90deg, hsl(268 60% 80%) 0%, hsl(210 50% 95%) 50%, hsl(280 80% 60%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(190 80% 50% / 0.2) 0%, transparent 70%);
+    
+    --glow-primary: 0 0 20px hsl(190 80% 50% / 0.3);
+    --glow-accent: 0 0 20px hsl(280 80% 60% / 0.3);
+    --glow-soft: 0 0 40px hsl(190 80% 50% / 0.1);
   }
 }
 
@@ -100,6 +125,127 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-cosmic);
+    min-height: 100vh;
   }
+}
+
+@layer components {
+  /* Cosmic Components */
+  .cosmic-gradient {
+    background: var(--gradient-cosmic);
+  }
+  
+  .nebula-gradient {
+    background: var(--gradient-nebula);
+  }
+  
+  .glow-effect {
+    box-shadow: var(--glow-soft);
+  }
+  
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+  
+  /* Button glowing effects */
+  .btn-cosmic {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: var(--gradient-nebula);
+    box-shadow: var(--glow-primary);
+  }
+  
+  .btn-cosmic:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-primary), 0 10px 25px hsl(190 100% 60% / 0.3);
+  }
+  
+  .btn-cosmic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(190 100% 80% / 0.4), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-cosmic:hover::before {
+    left: 100%;
+  }
+  
+  /* Card cosmic styling */
+  .cosmic-card {
+    @apply bg-card border border-border backdrop-blur-sm;
+    background: hsl(var(--card) / 0.8);
+    box-shadow: 0 8px 32px hsl(190 100% 60% / 0.1);
+  }
+  
+  .cosmic-card:hover {
+    @apply transition-all duration-300;
+    box-shadow: 0 12px 40px hsl(190 100% 60% / 0.2);
+    transform: translateY(-4px);
+  }
+  
+  /* Text glow effects */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .text-glow-lg {
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+  
+  /* Particle container */
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: var(--glow-soft);
+  }
+  50% { 
+    opacity: 0.8;
+    box-shadow: var(--glow-primary);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
 }
