@@ -1,13 +1,15 @@
 // Mock API service - Replace with real backend calls later
 // This file contains all placeholder functions for backend integration
 
+import { Talent, Company, APIResponse, TalentFilters, DashboardStats, TestResult, JobOffer } from '@/types';
+
 // Mock data
-export const mockTalents = [
+export const mockTalents: Talent[] = [
   {
     id: '1',
     candidateNumber: '2938',
     skills: ['React', 'TypeScript', 'Node.js', 'Python', 'AI/ML'],
-    seniority: 'Senior',
+    seniority: 'Senior' as const,
     yearsExperience: 6,
     location: 'Remote',
     availability: 'Available',
@@ -28,7 +30,7 @@ export const mockTalents = [
     id: '2',
     candidateNumber: '4712',
     skills: ['Python', 'TensorFlow', 'PyTorch', 'Computer Vision', 'MLOps'],
-    seniority: 'Senior',
+    seniority: 'Senior' as const,
     yearsExperience: 8,
     location: 'USA/Remote',
     availability: 'Available in 2 weeks',
@@ -48,7 +50,7 @@ export const mockTalents = [
     id: '3',
     candidateNumber: '1847',
     skills: ['Vue.js', 'Laravel', 'AWS', 'Docker', 'Microservices'],
-    seniority: 'Mid-Level',
+    seniority: 'Mid-Level' as const,
     yearsExperience: 4,
     location: 'Europe/Remote',
     availability: 'Available',
@@ -83,22 +85,47 @@ export const mockStats = {
 };
 
 // API Functions (currently return mock data)
-export const fetchTalents = async (filters = {}) => {
+export const fetchTalents = async (filters: Partial<TalentFilters> = {}): Promise<APIResponse<Talent[]>> => {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 800));
   
   // TODO: Replace with real API call
   // return fetch('/api/talents', { method: 'POST', body: JSON.stringify(filters) })
   
+  // Simple filtering logic for demo
+  let filteredTalents = [...mockTalents];
+  
+  if (filters.skills) {
+    const skillsArray = filters.skills.toLowerCase().split(',').map(s => s.trim());
+    filteredTalents = filteredTalents.filter(talent => 
+      skillsArray.some(skill => 
+        talent.skills.some(ts => ts.toLowerCase().includes(skill))
+      )
+    );
+  }
+  
+  if (filters.seniority && filters.seniority !== 'any') {
+    filteredTalents = filteredTalents.filter(talent => 
+      talent.seniority.toLowerCase() === filters.seniority?.toLowerCase()
+    );
+  }
+  
+  if (filters.location && filters.location !== 'any') {
+    filteredTalents = filteredTalents.filter(talent => 
+      talent.location.toLowerCase().includes(filters.location?.toLowerCase() || '')
+    );
+  }
+  
   return {
-    data: mockTalents,
-    total: mockTalents.length,
+    data: filteredTalents,
+    total: filteredTalents.length,
     page: 1,
-    totalPages: 1
+    totalPages: 1,
+    success: true
   };
 };
 
-export const fetchTalentById = async (id: string) => {
+export const fetchTalentById = async (id: string): Promise<Talent> => {
   await new Promise(resolve => setTimeout(resolve, 500));
   
   // TODO: Replace with real API call
@@ -157,7 +184,7 @@ export const getTestResults = async (testId: string) => {
   };
 };
 
-export const fetchEmployerDashboardData = async () => {
+export const fetchEmployerDashboardData = async (): Promise<DashboardStats> => {
   await new Promise(resolve => setTimeout(resolve, 1000));
   
   // TODO: Replace with real dashboard data
@@ -177,7 +204,12 @@ export const fetchEmployerDashboardData = async () => {
   };
 };
 
-export const fetchTalentDashboardData = async () => {
+export const fetchTalentDashboardData = async (): Promise<{
+  profileViews: number;
+  testResults: TestResult[];
+  jobOffers: JobOffer[];
+  visibility: boolean;
+}> => {
   await new Promise(resolve => setTimeout(resolve, 1000));
   
   // TODO: Replace with real talent dashboard data
