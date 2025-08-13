@@ -115,7 +115,7 @@ const TalentSearch = () => {
                         <SelectValue placeholder="Any level" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Any level</SelectItem>
+                        <SelectItem value="any">Any level</SelectItem>
                         <SelectItem value="junior">Junior</SelectItem>
                         <SelectItem value="mid">Mid-Level</SelectItem>
                         <SelectItem value="senior">Senior</SelectItem>
@@ -133,7 +133,7 @@ const TalentSearch = () => {
                         <SelectValue placeholder="Any location" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Any location</SelectItem>
+                        <SelectItem value="any">Any location</SelectItem>
                         <SelectItem value="remote">Remote</SelectItem>
                         <SelectItem value="usa">USA</SelectItem>
                         <SelectItem value="europe">Europe</SelectItem>
@@ -167,7 +167,7 @@ const TalentSearch = () => {
                         <SelectValue placeholder="Any" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Any</SelectItem>
+                        <SelectItem value="any">Any</SelectItem>
                         <SelectItem value="immediate">Available Now</SelectItem>
                         <SelectItem value="2weeks">Available in 2 weeks</SelectItem>
                         <SelectItem value="1month">Available in 1 month</SelectItem>
