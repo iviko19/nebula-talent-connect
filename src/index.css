@@ -8,54 +8,45 @@ All colors are HSL for maximum flexibility and theming support.
 
 @layer base {
   :root {
-    /* Cosmic Background Colors */
-    --background: 228 85% 7%;  /* Deep space blue */
-    --foreground: 210 50% 90%; /* Soft white */
-    
-    /* Surface Colors */
-    --card: 228 85% 9%;        /* Slightly lighter than background */
-    --card-foreground: 210 50% 90%;
-    
-    --popover: 228 85% 9%;
-    --popover-foreground: 210 50% 90%;
-    
-    /* Primary - Nebula Cyan */
-    --primary: 190 100% 60%;   /* Bright cyan */
-    --primary-foreground: 228 85% 7%;
-    
-    /* Secondary - Deep Purple */
-    --secondary: 268 80% 20%;  /* Deep purple */
-    --secondary-foreground: 210 50% 90%;
-    
-    /* Muted Surfaces */
-    --muted: 228 50% 15%;      /* Darker blue-gray */
-    --muted-foreground: 210 30% 70%;
-    
-    /* Accent - Electric Purple */
-    --accent: 280 100% 70%;    /* Bright purple */
-    --accent-foreground: 228 85% 7%;
-    
-    /* Destructive */
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 210 50% 90%;
-    
-    /* Borders and Inputs */
-    --border: 228 50% 25%;     /* Subtle cosmic border */
-    --input: 228 60% 15%;      /* Dark input background */
-    --ring: 190 100% 60%;      /* Primary cyan for focus */
-    
-    /* Design tokens */
+    /* Modern recruiting palette - dark theme */
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222 84% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 84% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 32% 15%;
+    --muted-foreground: 215 25% 65%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 221 83% 53%;
     --radius: 0.75rem;
     
-    /* Cosmic Gradients */
-    --gradient-nebula: linear-gradient(135deg, hsl(280 100% 70%) 0%, hsl(190 100% 60%) 100%);
-    --gradient-cosmic: linear-gradient(90deg, hsl(268 80% 20%) 0%, hsl(228 85% 9%) 50%, hsl(280 100% 70%) 100%);
-    --gradient-glow: radial-gradient(circle at center, hsl(190 100% 60% / 0.3) 0%, transparent 70%);
+    /* Trust colors */
+    --trust: 200 98% 39%;
+    --trust-foreground: 210 40% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
     
-    /* Glow Effects */
-    --glow-primary: 0 0 20px hsl(190 100% 60% / 0.5);
-    --glow-accent: 0 0 20px hsl(280 100% 70% / 0.5);
-    --glow-soft: 0 0 40px hsl(190 100% 60% / 0.2);
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(262 83% 58%) 100%);
+    --gradient-trust: linear-gradient(135deg, hsl(200 98% 39%) 0%, hsl(221 83% 53%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(222 84% 4.9%) 0%, hsl(217 32% 17%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58% / 0.1) 0%, hsl(221 83% 53% / 0.1) 50%, hsl(200 98% 39% / 0.05) 100%);
+
+    /* Professional glow effects */
+    --glow-soft: 0 0 20px hsl(221 83% 53% / 0.08);
+    --glow-primary: 0 0 30px hsl(221 83% 53% / 0.15);
+    --glow-accent: 0 0 40px hsl(262 83% 58% / 0.12);
+    --glow-trust: 0 0 25px hsl(200 98% 39% / 0.1);
     
     /* Animation Durations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,43 +70,44 @@ All colors are HSL for maximum flexibility and theming support.
   }
 
   .light {
-    /* Light mode - Inverted cosmic theme for accessibility */
-    --background: 210 50% 98%;
-    --foreground: 228 85% 15%;
+    /* Professional light mode */
+    --background: 0 0% 100%;
+    --foreground: 222 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4.9%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
     
-    --card: 210 50% 95%;
-    --card-foreground: 228 85% 15%;
-    
-    --popover: 210 50% 95%;
-    --popover-foreground: 228 85% 15%;
-    
-    --primary: 190 100% 40%;
-    --primary-foreground: 210 50% 98%;
-    
-    --secondary: 268 60% 85%;
-    --secondary-foreground: 228 85% 15%;
-    
-    --muted: 210 30% 90%;
-    --muted-foreground: 228 40% 40%;
-    
-    --accent: 280 80% 50%;
-    --accent-foreground: 210 50% 98%;
-    
-    --destructive: 0 85% 50%;
-    --destructive-foreground: 210 50% 98%;
-    
-    --border: 210 30% 85%;
-    --input: 210 30% 92%;
-    --ring: 190 100% 40%;
-    
-    /* Adjusted gradients for light mode */
-    --gradient-nebula: linear-gradient(135deg, hsl(280 80% 60%) 0%, hsl(190 80% 50%) 100%);
-    --gradient-cosmic: linear-gradient(90deg, hsl(268 60% 80%) 0%, hsl(210 50% 95%) 50%, hsl(280 80% 60%) 100%);
-    --gradient-glow: radial-gradient(circle at center, hsl(190 80% 50% / 0.2) 0%, transparent 70%);
-    
-    --glow-primary: 0 0 20px hsl(190 80% 50% / 0.3);
-    --glow-accent: 0 0 20px hsl(280 80% 60% / 0.3);
-    --glow-soft: 0 0 40px hsl(190 80% 50% / 0.1);
+    /* Trust colors light */
+    --trust: 200 98% 39%;
+    --trust-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Professional light gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(262 83% 58%) 100%);
+    --gradient-trust: linear-gradient(135deg, hsl(200 98% 39%) 0%, hsl(221 83% 53%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58% / 0.05) 0%, hsl(221 83% 53% / 0.05) 50%, hsl(200 98% 39% / 0.03) 100%);
+
+    /* Professional light glow effects */
+    --glow-soft: 0 0 20px hsl(221 83% 53% / 0.03);
+    --glow-primary: 0 0 30px hsl(221 83% 53% / 0.08);
+    --glow-accent: 0 0 40px hsl(262 83% 58% / 0.05);
+    --glow-trust: 0 0 25px hsl(200 98% 39% / 0.05);
   }
 }
 
@@ -126,19 +118,24 @@ All colors are HSL for maximum flexibility and theming support.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background: var(--gradient-cosmic);
+    background: var(--gradient-subtle);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    font-weight: 400;
     min-height: 100vh;
   }
 }
 
 @layer components {
-  /* Cosmic Components */
-  .cosmic-gradient {
-    background: var(--gradient-cosmic);
+  /* Professional Components */
+  .professional-gradient {
+    background: var(--gradient-primary);
   }
   
-  .nebula-gradient {
-    background: var(--gradient-nebula);
+  .trust-gradient {
+    background: var(--gradient-trust);
   }
   
   .glow-effect {
@@ -153,53 +150,60 @@ All colors are HSL for maximum flexibility and theming support.
     box-shadow: var(--glow-accent);
   }
   
-  /* Button glowing effects */
-  .btn-cosmic {
+  /* Professional button effects */
+  .btn-professional {
     @apply relative overflow-hidden transition-all duration-300;
-    background: var(--gradient-nebula);
+    background: var(--gradient-primary);
     box-shadow: var(--glow-primary);
   }
   
-  .btn-cosmic:hover {
+  .btn-professional:hover {
     transform: translateY(-2px);
-    box-shadow: var(--glow-primary), 0 10px 25px hsl(190 100% 60% / 0.3);
+    box-shadow: var(--glow-primary), 0 10px 25px hsl(221 83% 53% / 0.15);
   }
   
-  .btn-cosmic::before {
+  .btn-professional::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsl(190 100% 80% / 0.4), transparent);
+    background: linear-gradient(90deg, transparent, hsl(221 83% 53% / 0.3), transparent);
     transition: left 0.5s;
   }
   
-  .btn-cosmic:hover::before {
+  .btn-professional:hover::before {
     left: 100%;
   }
   
-  /* Card cosmic styling */
+  /* Professional card styling */
   .cosmic-card {
     @apply bg-card border border-border backdrop-blur-sm;
-    background: hsl(var(--card) / 0.8);
-    box-shadow: 0 8px 32px hsl(190 100% 60% / 0.1);
+    background: hsl(var(--card) / 0.95);
+    box-shadow: 0 4px 16px hsl(221 83% 53% / 0.08);
+    border: 1px solid hsl(var(--border));
   }
   
   .cosmic-card:hover {
     @apply transition-all duration-300;
-    box-shadow: 0 12px 40px hsl(190 100% 60% / 0.2);
-    transform: translateY(-4px);
+    box-shadow: 0 8px 24px hsl(221 83% 53% / 0.12);
+    transform: translateY(-2px);
   }
   
-  /* Text glow effects */
+  /* Professional text effects */
   .text-glow {
-    text-shadow: 0 0 10px currentColor;
+    text-shadow: 0 0 10px hsl(221 83% 53% / 0.3);
   }
   
   .text-glow-lg {
-    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+    text-shadow: 0 0 15px hsl(221 83% 53% / 0.4), 0 0 30px hsl(262 83% 58% / 0.2);
+  }
+  
+  /* Professional highlights */
+  .professional-highlight {
+    background: linear-gradient(135deg, hsl(221 83% 53% / 0.1) 0%, hsl(262 83% 58% / 0.05) 100%);
+    border: 1px solid hsl(221 83% 53% / 0.2);
   }
 }
 
