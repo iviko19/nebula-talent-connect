@@ -125,7 +125,8 @@ All colors are HSL for maximum flexibility and theming support.
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Tomorrow', sans-serif;
     background: var(--gradient-cosmic);
     min-height: 100vh;
   }

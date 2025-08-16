@@ -71,7 +71,7 @@ const ParticleBackground = ({
                 default: 'bounce',
               },
               random: false,
-              speed: 1,
+              speed: 0.3,
               straight: false,
             },
             number: {
@@ -89,7 +89,7 @@ const ParticleBackground = ({
               },
               animation: {
                 enable: true,
-                speed: 1,
+                speed: 0.5,
                 minimumValue: 0.1,
                 sync: false,
               },
@@ -101,7 +101,7 @@ const ParticleBackground = ({
               value: { min: 1, max: 5 },
               animation: {
                 enable: true,
-                speed: 2,
+                speed: 0.8,
                 minimumValue: 0.1,
                 sync: false,
               },
