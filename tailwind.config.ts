@@ -62,46 +62,37 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				/* Professional recruiting palette */
-				recruit: {
-					50: 'hsl(210 40% 98%)',
-					100: 'hsl(210 40% 96%)',
-					200: 'hsl(214 32% 91%)',
-					300: 'hsl(213 27% 84%)',
-					400: 'hsl(215 20% 65%)',
-					500: 'hsl(215 16% 47%)',
-					600: 'hsl(215 19% 35%)',
-					700: 'hsl(215 25% 27%)',
-					800: 'hsl(217 32% 17%)',
-					900: 'hsl(222 47% 11%)',
-					950: 'hsl(222 84% 4.9%)'
+				/* Cosmic color palette */
+				cosmic: {
+					50: 'hsl(210 50% 98%)',
+					100: 'hsl(210 50% 95%)',
+					200: 'hsl(210 40% 90%)',
+					300: 'hsl(210 30% 80%)',
+					400: 'hsl(210 25% 65%)',
+					500: 'hsl(210 20% 50%)',
+					600: 'hsl(210 25% 35%)',
+					700: 'hsl(228 50% 25%)',
+					800: 'hsl(228 60% 15%)',
+					900: 'hsl(228 85% 9%)',
+					950: 'hsl(228 85% 7%)'
 				},
-				trust: {
-					light: 'hsl(200 98% 39%)',
-					DEFAULT: 'hsl(221 83% 53%)',
-					deep: 'hsl(262 83% 58%)'
-				},
-				professional: {
-					blue: 'hsl(221 83% 53%)',
-					purple: 'hsl(262 83% 58%)',
-					cyan: 'hsl(200 98% 39%)',
-					success: 'hsl(142 76% 36%)'
+				nebula: {
+					cyan: 'hsl(190 100% 60%)',
+					purple: 'hsl(280 100% 70%)',
+					deep: 'hsl(268 80% 20%)'
 				}
 			},
 			backgroundImage: {
-				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-trust': 'var(--gradient-trust)',
-				'gradient-subtle': 'var(--gradient-subtle)',
-				'gradient-hero': 'var(--gradient-hero)'
+				'gradient-cosmic': 'var(--gradient-cosmic)',
+				'gradient-nebula': 'var(--gradient-nebula)',
+				'gradient-glow': 'var(--gradient-glow)'
 			},
 			boxShadow: {
 				'glow-sm': 'var(--glow-soft)',
 				'glow': 'var(--glow-primary)',
 				'glow-lg': 'var(--glow-accent)',
-				'glow-trust': 'var(--glow-trust)',
-				'professional': '0 8px 32px hsl(221 83% 53% / 0.08)',
-				'professional-hover': '0 12px 40px hsl(221 83% 53% / 0.12)',
-				'card-subtle': '0 4px 12px hsl(222 84% 4.9% / 0.1)'
+				'cosmic': '0 8px 32px hsl(190 100% 60% / 0.1)',
+				'cosmic-hover': '0 12px 40px hsl(190 100% 60% / 0.2)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -109,9 +100,8 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', 'sans-serif'],
-				'display': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
-				'mono': ['JetBrains Mono', 'Fira Code', 'monospace']
+				'cosmic': ['Orbitron', 'monospace'],
+				'nebula': ['Exo 2', 'sans-serif']
 			},
 			keyframes: {
 				'accordion-down': {
