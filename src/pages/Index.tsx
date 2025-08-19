@@ -5,6 +5,7 @@ import { ArrowRight, Zap, Shield, Users, Target, Star, CheckCircle } from 'lucid
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import CounterAnimation from '@/components/CounterAnimation';
+import TypingAnimation from '@/components/TypingAnimation';
 import { mockStats, mockCompanies } from '@/services/api';
 
 const Index = () => {
@@ -71,7 +72,7 @@ const Index = () => {
               transition={{ duration: 0.8 }}
             >
               <span className="bg-gradient-nebula bg-clip-text text-transparent text-glow-lg">
-                {t('hero.title')}
+                <TypingAnimation text={t('hero.title')} />
               </span>
             </motion.h1>
 
