@@ -25,9 +25,7 @@ const buttonVariants = cva(
         
         nebula: "bg-gradient-to-r from-nebula-purple to-nebula-cyan text-white font-semibold shadow-glow-lg hover:scale-105 hover:shadow-glow transition-all duration-300",
         
-        glow: "bg-background text-foreground border border-primary/50 hover:border-primary hover:shadow-glow hover:text-primary transition-all duration-300",
-        
-        neon: "btn-neon text-white border-0 relative overflow-hidden"
+        glow: "bg-background text-foreground border border-primary/50 hover:border-primary hover:shadow-glow hover:text-primary transition-all duration-300"
       },
       size: {
         default: "h-10 px-4 py-2",

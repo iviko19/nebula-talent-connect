@@ -125,7 +125,8 @@ All colors are HSL for maximum flexibility and theming support.
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Tomorrow', sans-serif;
     background: var(--gradient-cosmic);
     min-height: 100vh;
   }
@@ -178,18 +179,6 @@ All colors are HSL for maximum flexibility and theming support.
   
   .btn-cosmic:hover::before {
     left: 100%;
-  }
-
-  /* Enhanced neon glow buttons */
-  .btn-neon {
-    @apply relative overflow-hidden;
-    background: var(--gradient-nebula);
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
-  }
-
-  .btn-neon:hover {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.5);
-    transform: translateY(-2px);
   }
   
   /* Card cosmic styling */
