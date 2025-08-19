@@ -5,68 +5,11 @@ import { ArrowRight, Zap, Shield, Users, Target, Star, CheckCircle } from 'lucid
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import CounterAnimation from '@/components/CounterAnimation';
-import HolographicText from '@/components/HolographicText';
+import TypingAnimation from '@/components/TypingAnimation';
 import { mockStats, mockCompanies } from '@/services/api';
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
 const Index = () => {
   const { t } = useTranslation();
-  const heroRef = useRef<HTMLDivElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    const hero = heroRef.current;
-    const buttons = buttonsRef.current;
-    const subtitle = subtitleRef.current;
-    
-    if (!hero || !buttons || !subtitle) return;
-
-    // Parallax effect on mouse move
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      
-      const deltaX = (clientX - centerX) / centerX;
-      const deltaY = (clientY - centerY) / centerY;
-      
-      // Different speeds for different layers
-      gsap.to(subtitle, {
-        duration: 1,
-        x: deltaX * 20,
-        y: deltaY * 20,
-        ease: "power2.out"
-      });
-      
-      gsap.to(buttons, {
-        duration: 1.2,
-        x: deltaX * 30,
-        y: deltaY * 30,
-        ease: "power2.out"
-      });
-    };
-
-    // Scroll parallax
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      
-      gsap.to(hero, {
-        duration: 0.5,
-        y: scrollY * 0.5,
-        ease: "power2.out"
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const features = [
     {
@@ -121,21 +64,19 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={heroRef} className="text-center">
-            <motion.div
+          <div className="text-center">
+            <motion.h1
               className="text-4xl sm:text-5xl lg:text-6xl font-cosmic font-bold text-foreground mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <HolographicText 
-                text={t('hero.title')}
-                className="block"
-              />
-            </motion.div>
+              <span className="bg-gradient-nebula bg-clip-text text-transparent text-glow-lg">
+                <TypingAnimation text={t('hero.title')} />
+              </span>
+            </motion.h1>
 
             <motion.p
-              ref={subtitleRef}
               className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -145,19 +86,18 @@ const Index = () => {
             </motion.p>
 
             <motion.div
-              ref={buttonsRef}
               className="flex flex-col sm:flex-row gap-4 justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Button variant="neon" size="xl" asChild>
+              <Button variant="cosmic" size="xl" asChild>
                 <Link to="/talent-search" className="group">
                   {t('hero.findTalent')}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button variant="neon" size="xl" asChild>
+              <Button variant="cosmic-outline" size="xl" asChild>
                 <Link to="/for-talent">
                   {t('hero.joinTalent')}
                 </Link>

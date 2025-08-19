@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback } from 'react';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 import type { Engine } from 'tsparticles-engine';
-import { gsap } from 'gsap';
 
 interface ParticleBackgroundProps {
   id?: string;
@@ -15,70 +14,12 @@ const ParticleBackground = ({
   density = 80,
   interactive = true 
 }: ParticleBackgroundProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mousePos = useRef({ x: 0, y: 0 });
-
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current = { 
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1
-      };
-    };
-
-    // Add parallax effect to container
-    const handleMouseMoveParallax = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      
-      const deltaX = (clientX - centerX) * 0.01;
-      const deltaY = (clientY - centerY) * 0.01;
-      
-      gsap.to(container, {
-        duration: 1,
-        x: deltaX,
-        y: deltaY,
-        ease: "power2.out"
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousemove', handleMouseMoveParallax);
-
-    // Data flow animation
-    const animateDataFlow = () => {
-      const particles = container.querySelectorAll('canvas');
-      particles.forEach(canvas => {
-        gsap.to(canvas, {
-          duration: 2,
-          opacity: Math.random() * 0.3 + 0.7,
-          repeat: -1,
-          yoyo: true,
-          ease: "power2.inOut",
-          delay: Math.random() * 2
-        });
-      });
-    };
-
-    const intervalId = setInterval(animateDataFlow, 3000);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousemove', handleMouseMoveParallax);
-      clearInterval(intervalId);
-    };
-  }, []);
-
   return (
-    <div ref={containerRef} className="particles-container">
+    <div className="particles-container">
       <Particles
         id={id}
         init={particlesInit}
@@ -130,7 +71,7 @@ const ParticleBackground = ({
                 default: 'bounce',
               },
               random: false,
-              speed: 0.5,
+              speed: 0.3,
               straight: false,
             },
             number: {
@@ -141,15 +82,15 @@ const ParticleBackground = ({
               value: density,
             },
             opacity: {
-              value: 0.6,
+              value: 0.5,
               random: {
                 enable: true,
-                minimumValue: 0.2,
+                minimumValue: 0.1,
               },
               animation: {
                 enable: true,
-                speed: 2,
-                minimumValue: 0.2,
+                speed: 0.5,
+                minimumValue: 0.1,
                 sync: false,
               },
             },
@@ -160,7 +101,7 @@ const ParticleBackground = ({
               value: { min: 1, max: 5 },
               animation: {
                 enable: true,
-                speed: 2,
+                speed: 0.8,
                 minimumValue: 0.1,
                 sync: false,
               },
