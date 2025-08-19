@@ -100,9 +100,8 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'sans': ['Tomorrow', 'sans-serif'],
-				'cosmic': ['Tomorrow', 'sans-serif'],
-				'nebula': ['Tomorrow', 'sans-serif']
+				'cosmic': ['Orbitron', 'monospace'],
+				'nebula': ['Exo 2', 'sans-serif']
 			},
 			keyframes: {
 				'accordion-down': {
