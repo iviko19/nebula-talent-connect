@@ -110,9 +110,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'sans': ['Tomorrow', 'sans-serif'],
-				'cosmic': ['Tomorrow', 'sans-serif'],
-				'nebula': ['Tomorrow', 'sans-serif']
+				'sans': ['Poppins', 'sans-serif'],
+				'poppins': ['Poppins', 'sans-serif'],
+				'heading': ['Poppins', 'sans-serif']
 			},
 			keyframes: {
 				'accordion-down': {
