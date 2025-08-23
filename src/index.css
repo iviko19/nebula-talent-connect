@@ -2,63 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cosmic Space Design System
-Deep space colors inspired by nebulae, stars, and cosmic phenomena.
+/* Nebula Design System - Cosmic Theme
 All colors are HSL for maximum flexibility and theming support.
 */
 
 @layer base {
   :root {
-    /* Deep Space Background Colors */
-    --background: 225 95% 5%;   /* Ultra deep space navy */
-    --foreground: 210 50% 95%;  /* Starlight white */
+    /* Company Brand Colors */
+    --background: 213 46% 19%;  /* Dark navy */
+    --foreground: 27 100% 96%; /* Light cream */
     
     /* Surface Colors */
-    --card: 225 90% 8%;         /* Slightly lighter space */
-    --card-foreground: 210 50% 95%;
+    --card: 213 40% 25%;        /* Slightly lighter navy */
+    --card-foreground: 27 100% 96%;
     
-    --popover: 225 90% 8%;
-    --popover-foreground: 210 50% 95%;
+    --popover: 213 40% 25%;
+    --popover-foreground: 27 100% 96%;
     
-    /* Primary - Electric Cyan (Starlight) */
-    --primary: 190 100% 60%;    /* Bright electric cyan */
-    --primary-foreground: 225 95% 5%;
+    /* Primary - Company Orange */
+    --primary: 19 65% 59%;   /* Company orange */
+    --primary-foreground: 27 100% 96%;
     
-    /* Secondary - Nebula Purple */
-    --secondary: 270 80% 60%;   /* Rich nebula purple */
-    --secondary-foreground: 210 50% 95%;
+    /* Secondary - Company Blue */
+    --secondary: 204 58% 46%;  /* Company blue */
+    --secondary-foreground: 27 100% 96%;
     
     /* Muted Surfaces */
-    --muted: 225 70% 12%;       /* Space gray */
-    --muted-foreground: 210 40% 75%;
+    --muted: 213 35% 30%;      /* Muted navy */
+    --muted-foreground: 27 50% 80%;
     
-    /* Accent - Electric Magenta */
-    --accent: 320 100% 70%;     /* Bright cosmic magenta */
-    --accent-foreground: 225 95% 5%;
+    /* Accent - Company Blue */
+    --accent: 204 58% 46%;    /* Company blue */
+    --accent-foreground: 27 100% 96%;
     
     /* Destructive */
     --destructive: 0 85% 60%;
-    --destructive-foreground: 210 50% 95%;
+    --destructive-foreground: 27 100% 96%;
     
     /* Borders and Inputs */
-    --border: 225 60% 20%;      /* Subtle space border */
-    --input: 225 80% 10%;       /* Deep input background */
-    --ring: 190 100% 60%;       /* Primary cyan for focus */
+    --border: 213 30% 35%;     /* Lighter navy for borders */
+    --input: 213 40% 22%;      /* Dark navy for inputs */
+    --ring: 19 65% 59%;      /* Company orange for focus */
     
     /* Design tokens */
     --radius: 0.75rem;
     
-    /* Cosmic Gradients */
-    --gradient-nebula: linear-gradient(135deg, hsl(270 80% 60%) 0%, hsl(190 100% 60%) 50%, hsl(320 100% 70%) 100%);
-    --gradient-cosmic: linear-gradient(90deg, hsl(225 95% 5%) 0%, hsl(270 60% 15%) 30%, hsl(190 80% 20%) 60%, hsl(225 95% 5%) 100%);
-    --gradient-stellar: radial-gradient(ellipse at center, hsl(190 100% 60% / 0.4) 0%, hsl(270 80% 60% / 0.3) 50%, transparent 100%);
-    --gradient-aurora: linear-gradient(45deg, hsl(270 80% 60% / 0.8) 0%, hsl(190 100% 60% / 0.6) 50%, hsl(320 100% 70% / 0.8) 100%);
+    /* Company Brand Gradients */
+    --gradient-nebula: linear-gradient(135deg, hsl(19 65% 59%) 0%, hsl(204 58% 46%) 100%);
+    --gradient-cosmic: linear-gradient(90deg, hsl(213 46% 19%) 0%, hsl(213 40% 25%) 50%, hsl(19 65% 59%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(19 65% 59% / 0.3) 0%, transparent 70%);
     
     /* Glow Effects */
-    --glow-primary: 0 0 30px hsl(190 100% 60% / 0.6), 0 0 60px hsl(190 100% 60% / 0.4);
-    --glow-accent: 0 0 30px hsl(320 100% 70% / 0.6), 0 0 60px hsl(320 100% 70% / 0.4);
-    --glow-nebula: 0 0 40px hsl(270 80% 60% / 0.5), 0 0 80px hsl(270 80% 60% / 0.3);
-    --glow-soft: 0 0 50px hsl(190 100% 60% / 0.2);
+    --glow-primary: 0 0 20px hsl(19 65% 59% / 0.5);
+    --glow-accent: 0 0 20px hsl(204 58% 46% / 0.5);
+    --glow-soft: 0 0 40px hsl(19 65% 59% / 0.2);
     
     /* Animation Durations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -82,45 +79,43 @@ All colors are HSL for maximum flexibility and theming support.
   }
 
   .light {
-    /* Light mode - Daylight cosmic theme for accessibility */
-    --background: 210 60% 98%;
-    --foreground: 225 95% 8%;
+    /* Light mode - Company colors adjusted */
+    --background: 27 100% 96%;  /* Light cream background */
+    --foreground: 213 46% 19%;  /* Dark navy text */
     
-    --card: 210 40% 96%;
-    --card-foreground: 225 95% 8%;
+    --card: 27 80% 92%;         /* Slightly darker cream */
+    --card-foreground: 213 46% 19%;
     
-    --popover: 210 40% 96%;
-    --popover-foreground: 225 95% 8%;
+    --popover: 27 80% 92%;
+    --popover-foreground: 213 46% 19%;
     
-    --primary: 190 90% 45%;
-    --primary-foreground: 210 60% 98%;
+    --primary: 19 65% 55%;      /* Slightly darker orange for better contrast */
+    --primary-foreground: 27 100% 96%;
     
-    --secondary: 270 70% 50%;
-    --secondary-foreground: 210 60% 98%;
+    --secondary: 204 58% 40%;   /* Darker blue for light mode */
+    --secondary-foreground: 27 100% 96%;
     
-    --muted: 210 30% 92%;
-    --muted-foreground: 225 50% 35%;
+    --muted: 27 60% 88%;        /* Light muted cream */
+    --muted-foreground: 213 40% 30%;
     
-    --accent: 320 90% 55%;
-    --accent-foreground: 210 60% 98%;
+    --accent: 204 58% 40%;      /* Company blue */
+    --accent-foreground: 27 100% 96%;
     
     --destructive: 0 85% 50%;
-    --destructive-foreground: 210 60% 98%;
+    --destructive-foreground: 27 100% 96%;
     
-    --border: 210 30% 85%;
-    --input: 210 30% 94%;
-    --ring: 190 90% 45%;
+    --border: 27 40% 85%;       /* Light border */
+    --input: 27 60% 90%;        /* Light input background */
+    --ring: 19 65% 55%;         /* Company orange focus */
     
-    /* Light mode cosmic gradients */
-    --gradient-nebula: linear-gradient(135deg, hsl(270 70% 55%) 0%, hsl(190 90% 50%) 50%, hsl(320 90% 60%) 100%);
-    --gradient-cosmic: linear-gradient(90deg, hsl(210 60% 98%) 0%, hsl(270 40% 90%) 30%, hsl(190 60% 85%) 60%, hsl(210 60% 98%) 100%);
-    --gradient-stellar: radial-gradient(ellipse at center, hsl(190 90% 50% / 0.2) 0%, hsl(270 70% 55% / 0.15) 50%, transparent 100%);
-    --gradient-aurora: linear-gradient(45deg, hsl(270 70% 55% / 0.4) 0%, hsl(190 90% 50% / 0.3) 50%, hsl(320 90% 60% / 0.4) 100%);
+    /* Light mode gradients */
+    --gradient-nebula: linear-gradient(135deg, hsl(19 65% 55%) 0%, hsl(204 58% 40%) 100%);
+    --gradient-cosmic: linear-gradient(90deg, hsl(27 100% 96%) 0%, hsl(27 80% 92%) 50%, hsl(19 65% 55%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(19 65% 55% / 0.2) 0%, transparent 70%);
     
-    --glow-primary: 0 0 20px hsl(190 90% 50% / 0.3);
-    --glow-accent: 0 0 20px hsl(320 90% 60% / 0.3);
-    --glow-nebula: 0 0 25px hsl(270 70% 55% / 0.3);
-    --glow-soft: 0 0 30px hsl(190 90% 50% / 0.15);
+    --glow-primary: 0 0 20px hsl(19 65% 55% / 0.3);
+    --glow-accent: 0 0 20px hsl(204 58% 40% / 0.3);
+    --glow-soft: 0 0 40px hsl(19 65% 55% / 0.1);
   }
 }
 
@@ -133,28 +128,18 @@ All colors are HSL for maximum flexibility and theming support.
     @apply bg-background text-foreground antialiased;
     font-family: 'Poppins', sans-serif;
     background: var(--gradient-cosmic);
-    background-attachment: fixed;
     min-height: 100vh;
-    overflow-x: hidden;
   }
 }
 
 @layer components {
-  /* Cosmic Space Components */
+  /* Cosmic Components */
   .cosmic-gradient {
     background: var(--gradient-cosmic);
   }
   
   .nebula-gradient {
     background: var(--gradient-nebula);
-  }
-  
-  .stellar-gradient {
-    background: var(--gradient-stellar);
-  }
-  
-  .aurora-gradient {
-    background: var(--gradient-aurora);
   }
   
   .glow-effect {
@@ -169,22 +154,16 @@ All colors are HSL for maximum flexibility and theming support.
     box-shadow: var(--glow-accent);
   }
   
-  .glow-nebula {
-    box-shadow: var(--glow-nebula);
-  }
-  
-  /* Cosmic Button Effects */
+  /* Button glowing effects */
   .btn-cosmic {
-    @apply relative overflow-hidden transition-all duration-500;
+    @apply relative overflow-hidden transition-all duration-300;
     background: var(--gradient-nebula);
     box-shadow: var(--glow-primary);
-    border: 1px solid hsl(var(--primary) / 0.3);
   }
   
   .btn-cosmic:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: var(--glow-primary), 0 15px 35px hsl(190 100% 60% / 0.4);
-    border-color: hsl(var(--primary) / 0.6);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-primary), 0 10px 25px hsl(19 65% 59% / 0.3);
   }
   
   .btn-cosmic::before {
@@ -194,71 +173,34 @@ All colors are HSL for maximum flexibility and theming support.
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsl(190 100% 80% / 0.6), transparent);
-    transition: left 0.7s ease;
+    background: linear-gradient(90deg, transparent, hsl(19 65% 59% / 0.4), transparent);
+    transition: left 0.5s;
   }
   
   .btn-cosmic:hover::before {
     left: 100%;
   }
   
-  /* Stellar Card Styling */
+  /* Card cosmic styling */
   .cosmic-card {
-    @apply bg-card border border-border backdrop-blur-md;
-    background: hsl(var(--card) / 0.7);
-    box-shadow: 0 12px 40px hsl(190 100% 60% / 0.15), inset 0 1px 0 hsl(210 50% 95% / 0.1);
-    position: relative;
-  }
-  
-  .cosmic-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: var(--gradient-aurora);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    -webkit-mask-composite: xor;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    @apply bg-card border border-border backdrop-blur-sm;
+    background: hsl(var(--card) / 0.8);
+    box-shadow: 0 8px 32px hsl(19 65% 59% / 0.1);
   }
   
   .cosmic-card:hover {
-    @apply transition-all duration-500;
-    box-shadow: 0 20px 60px hsl(190 100% 60% / 0.25), var(--glow-nebula);
-    transform: translateY(-6px) scale(1.02);
+    @apply transition-all duration-300;
+    box-shadow: 0 12px 40px hsl(19 65% 59% / 0.2);
+    transform: translateY(-4px);
   }
   
-  .cosmic-card:hover::before {
-    opacity: 0.6;
-  }
-  
-  /* Text Glow Effects */
+  /* Text glow effects */
   .text-glow {
-    text-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
+    text-shadow: 0 0 10px currentColor;
   }
   
   .text-glow-lg {
-    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
-  }
-  
-  /* Stellar Background Effects */
-  .stellar-bg {
-    background: var(--gradient-stellar);
-    position: relative;
-  }
-  
-  .stellar-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-      radial-gradient(circle at 20% 30%, hsl(190 100% 60% / 0.3) 1px, transparent 1px),
-      radial-gradient(circle at 80% 70%, hsl(320 100% 70% / 0.3) 1px, transparent 1px),
-      radial-gradient(circle at 60% 20%, hsl(270 80% 60% / 0.3) 1px, transparent 1px);
-    background-size: 100px 100px, 80px 80px, 120px 120px;
-    animation: twinkle 4s ease-in-out infinite alternate;
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
   }
 }
 
@@ -285,16 +227,6 @@ All colors are HSL for maximum flexibility and theming support.
     height: 100%;
     pointer-events: none;
     z-index: -1;
-    background: var(--gradient-stellar);
-  }
-  
-  /* Cosmic animations */
-  .animate-twinkle {
-    animation: twinkle 4s ease-in-out infinite alternate;
-  }
-  
-  .animate-cosmic-pulse {
-    animation: cosmic-pulse 3s ease-in-out infinite;
   }
 }
 
@@ -317,27 +249,4 @@ All colors are HSL for maximum flexibility and theming support.
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: calc(200px + 100%) 0; }
-}
-
-@keyframes twinkle {
-  0%, 100% { 
-    opacity: 0.3; 
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 1; 
-    transform: scale(1.2);
-  }
-}
-
-@keyframes cosmic-pulse {
-  0%, 100% { 
-    opacity: 0.8;
-    box-shadow: var(--glow-soft);
-  }
-  50% { 
-    opacity: 1;
-    box-shadow: var(--glow-primary);
-  }
-}
 }
