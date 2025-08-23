@@ -48,15 +48,14 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <motion.div
-              className="w-8 h-8 bg-gradient-nebula rounded-lg glow-effect"
-              whileHover={{ scale: 1.1 }}
+          <Link to="/" className="flex items-center">
+            <motion.img
+              src="/lovable-uploads/22313fbf-15da-4ba3-a73c-166a88ce45f1.png"
+              alt="Nebula Logo"
+              className="h-10 w-auto"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             />
-            <span className="font-cosmic font-bold text-xl text-glow">
-              NEBULA
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

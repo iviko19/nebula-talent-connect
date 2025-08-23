@@ -64,11 +64,12 @@ const Footer = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Link to="/" className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-nebula rounded-lg glow-effect" />
-                <span className="font-cosmic font-bold text-xl text-glow">
-                  NEBULA
-                </span>
+              <Link to="/" className="flex items-center mb-4">
+                <img
+                  src="/lovable-uploads/22313fbf-15da-4ba3-a73c-166a88ce45f1.png"
+                  alt="Nebula Logo"
+                  className="h-10 w-auto"
+                />
               </Link>
               
               <p className="text-muted-foreground mb-6 max-w-md">

@@ -156,8 +156,13 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-foreground mb-4">
-              Why Choose <span className="text-primary text-glow">Nebula</span>?
+            <h2 className="text-3xl lg:text-4xl font-cosmic font-bold text-foreground mb-4 flex items-center justify-center gap-4">
+              Why Choose 
+              <img 
+                src="/lovable-uploads/22313fbf-15da-4ba3-a73c-166a88ce45f1.png" 
+                alt="Nebula" 
+                className="h-8 w-auto inline"
+              />?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Advanced technology meets human expertise to deliver exceptional talent matching
