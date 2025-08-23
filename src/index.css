@@ -8,54 +8,54 @@ All colors are HSL for maximum flexibility and theming support.
 
 @layer base {
   :root {
-    /* Company Brand Colors */
-    --background: 213 46% 19%;  /* Dark navy */
-    --foreground: 27 100% 96%; /* Light cream */
+    /* Cosmic Background Colors */
+    --background: 228 85% 7%;  /* Deep space blue */
+    --foreground: 210 50% 90%; /* Soft white */
     
     /* Surface Colors */
-    --card: 213 40% 25%;        /* Slightly lighter navy */
-    --card-foreground: 27 100% 96%;
+    --card: 228 85% 9%;        /* Slightly lighter than background */
+    --card-foreground: 210 50% 90%;
     
-    --popover: 213 40% 25%;
-    --popover-foreground: 27 100% 96%;
+    --popover: 228 85% 9%;
+    --popover-foreground: 210 50% 90%;
     
-    /* Primary - Company Orange */
-    --primary: 19 65% 59%;   /* Company orange */
-    --primary-foreground: 27 100% 96%;
+    /* Primary - Nebula Cyan */
+    --primary: 190 100% 60%;   /* Bright cyan */
+    --primary-foreground: 228 85% 7%;
     
-    /* Secondary - Company Blue */
-    --secondary: 204 58% 46%;  /* Company blue */
-    --secondary-foreground: 27 100% 96%;
+    /* Secondary - Deep Purple */
+    --secondary: 268 80% 20%;  /* Deep purple */
+    --secondary-foreground: 210 50% 90%;
     
     /* Muted Surfaces */
-    --muted: 213 35% 30%;      /* Muted navy */
-    --muted-foreground: 27 50% 80%;
+    --muted: 228 50% 15%;      /* Darker blue-gray */
+    --muted-foreground: 210 30% 70%;
     
-    /* Accent - Company Blue */
-    --accent: 204 58% 46%;    /* Company blue */
-    --accent-foreground: 27 100% 96%;
+    /* Accent - Electric Purple */
+    --accent: 280 100% 70%;    /* Bright purple */
+    --accent-foreground: 228 85% 7%;
     
     /* Destructive */
     --destructive: 0 85% 60%;
-    --destructive-foreground: 27 100% 96%;
+    --destructive-foreground: 210 50% 90%;
     
     /* Borders and Inputs */
-    --border: 213 30% 35%;     /* Lighter navy for borders */
-    --input: 213 40% 22%;      /* Dark navy for inputs */
-    --ring: 19 65% 59%;      /* Company orange for focus */
+    --border: 228 50% 25%;     /* Subtle cosmic border */
+    --input: 228 60% 15%;      /* Dark input background */
+    --ring: 190 100% 60%;      /* Primary cyan for focus */
     
     /* Design tokens */
     --radius: 0.75rem;
     
-    /* Company Brand Gradients */
-    --gradient-nebula: linear-gradient(135deg, hsl(19 65% 59%) 0%, hsl(204 58% 46%) 100%);
-    --gradient-cosmic: linear-gradient(90deg, hsl(213 46% 19%) 0%, hsl(213 40% 25%) 50%, hsl(19 65% 59%) 100%);
-    --gradient-glow: radial-gradient(circle at center, hsl(19 65% 59% / 0.3) 0%, transparent 70%);
+    /* Cosmic Gradients */
+    --gradient-nebula: linear-gradient(135deg, hsl(280 100% 70%) 0%, hsl(190 100% 60%) 100%);
+    --gradient-cosmic: linear-gradient(90deg, hsl(268 80% 20%) 0%, hsl(228 85% 9%) 50%, hsl(280 100% 70%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(190 100% 60% / 0.3) 0%, transparent 70%);
     
     /* Glow Effects */
-    --glow-primary: 0 0 20px hsl(19 65% 59% / 0.5);
-    --glow-accent: 0 0 20px hsl(204 58% 46% / 0.5);
-    --glow-soft: 0 0 40px hsl(19 65% 59% / 0.2);
+    --glow-primary: 0 0 20px hsl(190 100% 60% / 0.5);
+    --glow-accent: 0 0 20px hsl(280 100% 70% / 0.5);
+    --glow-soft: 0 0 40px hsl(190 100% 60% / 0.2);
     
     /* Animation Durations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,43 +79,43 @@ All colors are HSL for maximum flexibility and theming support.
   }
 
   .light {
-    /* Light mode - Company colors adjusted */
-    --background: 27 100% 96%;  /* Light cream background */
-    --foreground: 213 46% 19%;  /* Dark navy text */
+    /* Light mode - Inverted cosmic theme for accessibility */
+    --background: 210 50% 98%;
+    --foreground: 228 85% 15%;
     
-    --card: 27 80% 92%;         /* Slightly darker cream */
-    --card-foreground: 213 46% 19%;
+    --card: 210 50% 95%;
+    --card-foreground: 228 85% 15%;
     
-    --popover: 27 80% 92%;
-    --popover-foreground: 213 46% 19%;
+    --popover: 210 50% 95%;
+    --popover-foreground: 228 85% 15%;
     
-    --primary: 19 65% 55%;      /* Slightly darker orange for better contrast */
-    --primary-foreground: 27 100% 96%;
+    --primary: 190 100% 40%;
+    --primary-foreground: 210 50% 98%;
     
-    --secondary: 204 58% 40%;   /* Darker blue for light mode */
-    --secondary-foreground: 27 100% 96%;
+    --secondary: 268 60% 85%;
+    --secondary-foreground: 228 85% 15%;
     
-    --muted: 27 60% 88%;        /* Light muted cream */
-    --muted-foreground: 213 40% 30%;
+    --muted: 210 30% 90%;
+    --muted-foreground: 228 40% 40%;
     
-    --accent: 204 58% 40%;      /* Company blue */
-    --accent-foreground: 27 100% 96%;
+    --accent: 280 80% 50%;
+    --accent-foreground: 210 50% 98%;
     
     --destructive: 0 85% 50%;
-    --destructive-foreground: 27 100% 96%;
+    --destructive-foreground: 210 50% 98%;
     
-    --border: 27 40% 85%;       /* Light border */
-    --input: 27 60% 90%;        /* Light input background */
-    --ring: 19 65% 55%;         /* Company orange focus */
+    --border: 210 30% 85%;
+    --input: 210 30% 92%;
+    --ring: 190 100% 40%;
     
-    /* Light mode gradients */
-    --gradient-nebula: linear-gradient(135deg, hsl(19 65% 55%) 0%, hsl(204 58% 40%) 100%);
-    --gradient-cosmic: linear-gradient(90deg, hsl(27 100% 96%) 0%, hsl(27 80% 92%) 50%, hsl(19 65% 55%) 100%);
-    --gradient-glow: radial-gradient(circle at center, hsl(19 65% 55% / 0.2) 0%, transparent 70%);
+    /* Adjusted gradients for light mode */
+    --gradient-nebula: linear-gradient(135deg, hsl(280 80% 60%) 0%, hsl(190 80% 50%) 100%);
+    --gradient-cosmic: linear-gradient(90deg, hsl(268 60% 80%) 0%, hsl(210 50% 95%) 50%, hsl(280 80% 60%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(190 80% 50% / 0.2) 0%, transparent 70%);
     
-    --glow-primary: 0 0 20px hsl(19 65% 55% / 0.3);
-    --glow-accent: 0 0 20px hsl(204 58% 40% / 0.3);
-    --glow-soft: 0 0 40px hsl(19 65% 55% / 0.1);
+    --glow-primary: 0 0 20px hsl(190 80% 50% / 0.3);
+    --glow-accent: 0 0 20px hsl(280 80% 60% / 0.3);
+    --glow-soft: 0 0 40px hsl(190 80% 50% / 0.1);
   }
 }
 
@@ -163,7 +163,7 @@ All colors are HSL for maximum flexibility and theming support.
   
   .btn-cosmic:hover {
     transform: translateY(-2px);
-    box-shadow: var(--glow-primary), 0 10px 25px hsl(19 65% 59% / 0.3);
+    box-shadow: var(--glow-primary), 0 10px 25px hsl(190 100% 60% / 0.3);
   }
   
   .btn-cosmic::before {
@@ -173,7 +173,7 @@ All colors are HSL for maximum flexibility and theming support.
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsl(19 65% 59% / 0.4), transparent);
+    background: linear-gradient(90deg, transparent, hsl(190 100% 80% / 0.4), transparent);
     transition: left 0.5s;
   }
   
@@ -185,12 +185,12 @@ All colors are HSL for maximum flexibility and theming support.
   .cosmic-card {
     @apply bg-card border border-border backdrop-blur-sm;
     background: hsl(var(--card) / 0.8);
-    box-shadow: 0 8px 32px hsl(19 65% 59% / 0.1);
+    box-shadow: 0 8px 32px hsl(190 100% 60% / 0.1);
   }
   
   .cosmic-card:hover {
     @apply transition-all duration-300;
-    box-shadow: 0 12px 40px hsl(19 65% 59% / 0.2);
+    box-shadow: 0 12px 40px hsl(190 100% 60% / 0.2);
     transform: translateY(-4px);
   }
   
