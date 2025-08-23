@@ -50,63 +50,88 @@ const ParticleBackground = ({
               },
             },
           },
-          particles: {
-            color: {
-              value: ['#00D4FF', '#9D4EDD', '#FFFFFF'],
-            },
-            links: {
-              color: '#00D4FF',
-              distance: 150,
-              enable: true,
-              opacity: 0.2,
-              width: 1,
-            },
-            collisions: {
-              enable: true,
-            },
-            move: {
-              direction: 'none',
-              enable: true,
-              outModes: {
-                default: 'bounce',
+            particles: {
+              color: {
+                value: ['#00D4FF', '#AD5FDF', '#FF2E97', '#FFFFFF', '#E6F3FF'],
               },
-              random: false,
-              speed: 0.3,
-              straight: false,
-            },
-            number: {
-              density: {
+              links: {
+                color: '#00D4FF',
+                distance: 120,
                 enable: true,
-                area: 800,
+                opacity: 0.15,
+                width: 0.8,
+                triangles: {
+                  enable: true,
+                  color: '#AD5FDF',
+                  opacity: 0.05,
+                },
               },
-              value: density,
-            },
-            opacity: {
-              value: 0.5,
-              random: {
+              collisions: {
+                enable: false,
+              },
+              move: {
+                direction: 'none',
                 enable: true,
-                minimumValue: 0.1,
+                outModes: {
+                  default: 'out',
+                },
+                random: true,
+                speed: 0.2,
+                straight: false,
+                drift: 0.1,
               },
-              animation: {
-                enable: true,
-                speed: 0.5,
-                minimumValue: 0.1,
-                sync: false,
+              number: {
+                density: {
+                  enable: true,
+                  area: 900,
+                },
+                value: density,
+              },
+              opacity: {
+                value: { min: 0.1, max: 0.8 },
+                random: {
+                  enable: true,
+                  minimumValue: 0.05,
+                },
+                animation: {
+                  enable: true,
+                  speed: 0.3,
+                  minimumValue: 0.05,
+                  sync: false,
+                },
+              },
+              shape: {
+                type: ['circle', 'star', 'polygon'],
+                options: {
+                  star: {
+                    sides: 5,
+                  },
+                  polygon: {
+                    sides: 6,
+                  },
+                },
+              },
+              size: {
+                value: { min: 0.5, max: 3 },
+                random: {
+                  enable: true,
+                  minimumValue: 0.2,
+                },
+                animation: {
+                  enable: true,
+                  speed: 0.4,
+                  minimumValue: 0.2,
+                  sync: false,
+                },
+              },
+              twinkle: {
+                particles: {
+                  enable: true,
+                  frequency: 0.05,
+                  opacity: 1,
+                },
               },
             },
-            shape: {
-              type: ['circle', 'triangle'],
-            },
-            size: {
-              value: { min: 1, max: 5 },
-              animation: {
-                enable: true,
-                speed: 0.8,
-                minimumValue: 0.1,
-                sync: false,
-              },
-            },
-          },
           detectRetina: true,
         }}
       />
