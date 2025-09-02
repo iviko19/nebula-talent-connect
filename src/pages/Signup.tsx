@@ -14,7 +14,7 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
-    userType: 'talent',
+    userType: 'employer',
     firstName: '',
     lastName: '',
     email: '',
@@ -39,12 +39,8 @@ const Signup = () => {
       return;
     }
 
-    // Mock signup - redirect based on user type
-    if (formData.userType === 'talent') {
-      navigate('/talent-dashboard');
-    } else {
-      navigate('/employer-dashboard');
-    }
+    // Mock signup - redirect to employer dashboard
+    navigate('/employer-dashboard');
   };
 
   const benefits = [
@@ -126,17 +122,15 @@ const Signup = () => {
                   <CardTitle className="text-center">Create Your Account</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Tabs value={formData.userType} onValueChange={(value) => setFormData({...formData, userType: value})}>
-                    <TabsList className="grid w-full grid-cols-2 mb-6">
-                      <TabsTrigger value="talent" className="flex items-center gap-2">
-                        <User className="w-4 h-4" />
-                        I'm Talent
-                      </TabsTrigger>
-                      <TabsTrigger value="employer" className="flex items-center gap-2">
-                        <Building className="w-4 h-4" />
-                        I'm Hiring
-                      </TabsTrigger>
-                    </TabsList>
+                  <div className="text-center mb-6">
+                    <div className="flex items-center justify-center gap-2 text-primary text-lg font-medium">
+                      <Building className="w-5 h-5" />
+                      Company Registration
+                    </div>
+                    <p className="text-muted-foreground text-sm mt-2">
+                      Register your company to find and hire top talent
+                    </p>
+                  </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                       {/* Personal Information */}
@@ -163,21 +157,19 @@ const Signup = () => {
                         required
                       />
 
-                      {/* Company Info for Employers */}
-                      <TabsContent value="employer" className="space-y-4 mt-4">
-                        <Input
-                          placeholder="Company Name"
-                          value={formData.company}
-                          onChange={(e) => setFormData({...formData, company: e.target.value})}
-                          required={formData.userType === 'employer'}
-                        />
-                        <Input
-                          placeholder="Job Title"
-                          value={formData.jobTitle}
-                          onChange={(e) => setFormData({...formData, jobTitle: e.target.value})}
-                          required={formData.userType === 'employer'}
-                        />
-                      </TabsContent>
+                      {/* Company Information */}
+                      <Input
+                        placeholder="Company Name"
+                        value={formData.company}
+                        onChange={(e) => setFormData({...formData, company: e.target.value})}
+                        required
+                      />
+                      <Input
+                        placeholder="Job Title"
+                        value={formData.jobTitle}
+                        onChange={(e) => setFormData({...formData, jobTitle: e.target.value})}
+                        required
+                      />
 
                       <Select value={formData.country} onValueChange={(value) => setFormData({...formData, country: value})}>
                         <SelectTrigger>
@@ -293,7 +285,6 @@ const Signup = () => {
                         </Link>
                       </p>
                     </div>
-                  </Tabs>
                 </CardContent>
               </Card>
             </motion.div>

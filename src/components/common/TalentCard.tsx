@@ -24,7 +24,7 @@ export const TalentCard = ({ talent, index = 0 }: TalentCardProps) => {
           <div className="flex justify-between items-start mb-4">
             <div>
               <h3 className="text-lg font-semibold text-foreground">
-                Candidate #{talent.candidateNumber}
+                {talent.candidateNumber}
               </h3>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Briefcase className="w-4 h-4" />
@@ -36,17 +36,32 @@ export const TalentCard = ({ talent, index = 0 }: TalentCardProps) => {
                 <Star className="w-4 h-4 fill-current" />
                 <span>{talent.testScores.overall}/100</span>
               </div>
+              <Badge 
+                variant={talent.availability === 'Available' ? 'default' : 'secondary'}
+                className="text-xs mt-1"
+              >
+                {talent.availability}
+              </Badge>
             </div>
           </div>
 
-          {/* Skills */}
+          {/* Skills with Proficiency */}
           <div className="mb-4">
             <div className="flex flex-wrap gap-1">
-              {talent.skills.slice(0, 4).map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-xs">
-                  {skill}
-                </Badge>
-              ))}
+              {talent.skills.slice(0, 4).map((skill, skillIndex) => {
+                if (typeof skill === 'string') {
+                  return (
+                    <Badge key={skill} variant="secondary" className="text-xs">
+                      {skill}
+                    </Badge>
+                  );
+                }
+                return (
+                  <Badge key={skill.name || skillIndex} variant="secondary" className="text-xs">
+                    {skill.name} ({skill.proficiency})
+                  </Badge>
+                );
+              })}
               {talent.skills.length > 4 && (
                 <Badge variant="outline" className="text-xs">
                   +{talent.skills.length - 4} more
@@ -54,6 +69,20 @@ export const TalentCard = ({ talent, index = 0 }: TalentCardProps) => {
               )}
             </div>
           </div>
+
+          {/* Industry & Work Type */}
+          {(talent.industry || talent.workType) && (
+            <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
+              <div className="flex flex-wrap gap-1">
+                {talent.industry?.slice(0, 2).map((ind) => (
+                  <Badge key={ind} variant="outline" className="text-xs">
+                    {ind}
+                  </Badge>
+                ))}
+              </div>
+              {talent.workType && <span className="text-xs">{talent.workType}</span>}
+            </div>
+          )}
 
           {/* Location & Salary */}
           <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
@@ -71,14 +100,14 @@ export const TalentCard = ({ talent, index = 0 }: TalentCardProps) => {
 
           {/* Last Project */}
           <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-            {talent.lastProject}
+            <strong>Recent:</strong> {talent.lastProject}
           </p>
 
           {/* Action Button */}
           <Button asChild variant="cosmic" className="w-full group">
             <Link to={`/talent/${talent.id}`}>
               <Unlock className="w-4 h-4 mr-2" />
-              Unlock Profile
+              View Profile
             </Link>
           </Button>
         </CardContent>

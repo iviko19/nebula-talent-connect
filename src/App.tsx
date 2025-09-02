@@ -15,14 +15,12 @@ import Index from "./pages/Index";
 import TalentSearch from "./pages/TalentSearch";
 import TalentProfile from "./pages/TalentProfile";
 import ForCompanies from "./pages/ForCompanies";
-import ForTalent from "./pages/ForTalent";
-import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import EmployerDashboard from "./pages/EmployerDashboard";
-import TalentDashboard from "./pages/TalentDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
+import JoinAsTalent from "./pages/JoinAsTalent";
 import TestingModule from "./pages/TestingModule";
 import ContractPage from "./pages/ContractPage";
-import PaymentPage from "./pages/PaymentPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -44,14 +42,13 @@ const App = () => (
               <Route path="/talent-search" element={<TalentSearch />} />
               <Route path="/talent/:id" element={<TalentProfile />} />
               <Route path="/for-companies" element={<ForCompanies />} />
-              <Route path="/for-talent" element={<ForTalent />} />
-              <Route path="/pricing" element={<Pricing />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/employer-dashboard" element={<EmployerDashboard />} />
-              <Route path="/talent-dashboard" element={<TalentDashboard />} />
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
+              <Route path="/admin-login" element={<Login />} />
+              <Route path="/join-as-talent" element={<JoinAsTalent />} />
               <Route path="/testing" element={<TestingModule />} />
               <Route path="/contract" element={<ContractPage />} />
-              <Route path="/payment" element={<PaymentPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="*" element={<NotFound />} />

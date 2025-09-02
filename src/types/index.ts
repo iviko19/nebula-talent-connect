@@ -12,11 +12,11 @@ export interface User {
 export interface Talent {
   id: string;
   candidateNumber: string;
-  skills: string[];
+  skills: Array<{ name: string; proficiency: 'Expert' | 'Advanced' | 'Intermediate' }> | string[];
   seniority: 'Junior' | 'Mid-Level' | 'Senior' | 'Lead' | 'Principal';
   yearsExperience: number;
   location: string;
-  availability: string;
+  availability: 'Available' | 'Busy' | string;
   lastProject: string;
   testScores: {
     overall: number;
@@ -26,8 +26,10 @@ export interface Talent {
   salaryRange: {
     min: number;
     max: number;
-    currency: string;
+    currency?: string;
   };
+  industry?: string[];
+  workType?: 'Full-time' | 'Contract' | 'Part-time';
   locked?: {
     name: string;
     photo: string;

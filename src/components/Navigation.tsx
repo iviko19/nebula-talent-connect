@@ -25,8 +25,6 @@ const Navigation = () => {
     { key: 'home', href: '/', label: t('nav.home') },
     { key: 'findTalent', href: '/talent-search', label: t('nav.findTalent') },
     { key: 'forCompanies', href: '/for-companies', label: t('nav.forCompanies') },
-    { key: 'forTalent', href: '/for-talent', label: t('nav.forTalent') },
-    { key: 'pricing', href: '/pricing', label: t('nav.pricing') },
     { key: 'contact', href: '/contact', label: t('nav.contact') },
   ];
 
