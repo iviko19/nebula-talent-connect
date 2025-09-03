@@ -20,7 +20,7 @@ import Contact from "./pages/Contact";
 import EmployerDashboard from "./pages/EmployerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import JoinAsTalent from "./pages/JoinAsTalent";
-import TestingModule from "./pages/TestingModule";
+
 import ContractPage from "./pages/ContractPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -49,7 +49,7 @@ const App = () => (
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/admin-login" element={<Login />} />
               <Route path="/join-as-talent" element={<JoinAsTalent />} />
-              <Route path="/testing" element={<TestingModule />} />
+              
               <Route path="/contract" element={<ContractPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
