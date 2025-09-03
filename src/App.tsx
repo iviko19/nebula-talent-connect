@@ -15,6 +15,7 @@ import Index from "./pages/Index";
 import TalentSearch from "./pages/TalentSearch";
 import TalentProfile from "./pages/TalentProfile";
 import ForCompanies from "./pages/ForCompanies";
+import ForTalent from "./pages/ForTalent";
 import Contact from "./pages/Contact";
 import EmployerDashboard from "./pages/EmployerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/talent-search" element={<TalentSearch />} />
               <Route path="/talent/:id" element={<TalentProfile />} />
               <Route path="/for-companies" element={<ForCompanies />} />
+              <Route path="/for-talent" element={<ForTalent />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/employer-dashboard" element={<EmployerDashboard />} />
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
