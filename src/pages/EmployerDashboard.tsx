@@ -17,7 +17,9 @@ import {
   TrendingUp,
   Eye,
   Download,
-  Building
+  Building,
+  Heart,
+  Mail
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -26,6 +28,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
+import JobManager from '@/components/employer/JobManager';
+import ShortlistManager from '@/components/employer/ShortlistManager';
 
 const EmployerDashboard = () => {
   const [company] = useState({
@@ -203,10 +207,11 @@ const EmployerDashboard = () => {
           {/* Main Content */}
           <div className="lg:col-span-2">
             <Tabs defaultValue="overview" className="space-y-6">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="jobs">Active Jobs</TabsTrigger>
+                <TabsTrigger value="jobs">Jobs</TabsTrigger>
                 <TabsTrigger value="candidates">Candidates</TabsTrigger>
+                <TabsTrigger value="shortlist">Shortlist</TabsTrigger>
                 <TabsTrigger value="analytics">Analytics</TabsTrigger>
               </TabsList>
 
@@ -235,8 +240,8 @@ const EmployerDashboard = () => {
                           <span>Post New Job</span>
                         </Button>
                         <Button variant="outline" className="h-20 flex-col gap-2">
-                          <Calendar className="w-5 h-5" />
-                          <span>Schedule Interviews</span>
+                          <Heart className="w-5 h-5" />
+                          <span>View Shortlist</span>
                         </Button>
                         <Button variant="outline" className="h-20 flex-col gap-2">
                           <Download className="w-5 h-5" />
@@ -296,67 +301,9 @@ const EmployerDashboard = () => {
                 </motion.div>
               </TabsContent>
 
-              {/* Active Jobs Tab */}
+              {/* Jobs Tab */}
               <TabsContent value="jobs" className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Card className="cosmic-card">
-                    <CardHeader className="flex flex-row items-center justify-between">
-                      <CardTitle>Active Job Postings</CardTitle>
-                      <Button variant="cosmic" size="sm">
-                        <Plus className="w-4 h-4 mr-2" />
-                        Post New Job
-                      </Button>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        {activeJobs.map((job) => (
-                          <div key={job.id} className="p-4 border border-border rounded-lg">
-                            <div className="flex items-start justify-between mb-3">
-                              <div>
-                                <h3 className="font-semibold text-foreground">{job.title}</h3>
-                                <p className="text-sm text-muted-foreground">{job.department}</p>
-                                <p className="text-xs text-muted-foreground">Posted {job.postedDate}</p>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Badge variant={job.status === 'active' ? 'default' : 'secondary'}>
-                                  {job.status}
-                                </Badge>
-                                <Badge variant={
-                                  job.priority === 'high' ? 'destructive' :
-                                  job.priority === 'medium' ? 'secondary' : 'outline'
-                                }>
-                                  {job.priority} priority
-                                </Badge>
-                              </div>
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <p className="text-sm text-muted-foreground">
-                                {job.applicants} applicants
-                              </p>
-                              <div className="flex gap-2">
-                                <Button variant="outline" size="sm">
-                                  <Eye className="w-4 h-4 mr-1" />
-                                  View
-                                </Button>
-                                <Button variant="outline" size="sm">
-                                  <Users className="w-4 h-4 mr-1" />
-                                  Candidates
-                                </Button>
-                                <Button variant="ghost" size="sm">
-                                  <MoreVertical className="w-4 h-4" />
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                <JobManager />
               </TabsContent>
 
               {/* Candidates Tab */}
@@ -423,6 +370,11 @@ const EmployerDashboard = () => {
                     </CardContent>
                   </Card>
                 </motion.div>
+              </TabsContent>
+
+              {/* Shortlist Tab */}
+              <TabsContent value="shortlist" className="space-y-6">
+                <ShortlistManager />
               </TabsContent>
 
               {/* Analytics Tab */}

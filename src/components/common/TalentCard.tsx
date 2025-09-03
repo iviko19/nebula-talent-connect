@@ -103,13 +103,17 @@ export const TalentCard = ({ talent, index = 0 }: TalentCardProps) => {
             <strong>Recent:</strong> {talent.lastProject}
           </p>
 
-          {/* Action Button */}
-          <Button asChild variant="cosmic" className="w-full group">
-            <Link to={`/talent/${talent.id}`}>
-              <Unlock className="w-4 h-4 mr-2" />
-              View Profile
-            </Link>
-          </Button>
+          {/* Action Buttons */}
+          <div className="flex gap-2">
+            <Button asChild variant="outline" className="flex-1">
+              <Link to={`/talent/${talent.id}`}>
+                View Profile
+              </Link>
+            </Button>
+            <Button variant="cosmic" className="flex-1">
+              Shortlist
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </motion.div>
