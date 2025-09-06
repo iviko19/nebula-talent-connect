@@ -9,12 +9,11 @@ import {
   Briefcase, 
   Calendar, 
   DollarSign,
-  Unlock,
   Mail,
-  ExternalLink,
   Award,
   Code,
-  User
+  Building,
+  Clock
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,7 +27,6 @@ const TalentProfile = () => {
   const { t } = useTranslation();
   const [talent, setTalent] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [isUnlocked, setIsUnlocked] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -48,9 +46,6 @@ const TalentProfile = () => {
     }
   };
 
-  const handleUnlock = () => {
-    navigate(`/payment?talentId=${id}`);
-  };
 
   if (loading) {
     return (
@@ -126,7 +121,7 @@ const TalentProfile = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h1 className="text-2xl font-cosmic font-bold text-foreground mb-2">
-                        {isUnlocked ? talent.locked.name : `Candidate #${talent.candidateNumber}`}
+                        Candidate #{talent.candidateNumber}
                       </h1>
                       <div className="flex items-center gap-4 text-muted-foreground">
                         <div className="flex items-center gap-1">
@@ -239,14 +234,6 @@ const TalentProfile = () => {
                   <p className="text-muted-foreground">
                     {talent.lastProject}
                   </p>
-                  {isUnlocked && (
-                    <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground">
-                        Unlock full profile to see detailed project descriptions, 
-                        portfolio links, and complete work history.
-                      </p>
-                    </div>
-                  )}
                 </CardContent>
               </Card>
             </motion.div>
@@ -254,85 +241,116 @@ const TalentProfile = () => {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            {/* Contact Card */}
+            {/* Professional Bio/Summary */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <Card className="cosmic-card mb-6">
-                <CardContent className="p-6">
-                  {!isUnlocked ? (
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                        <User className="w-8 h-8 text-muted-foreground" />
-                      </div>
-                      <h3 className="font-semibold text-foreground mb-2">
-                        Unlock Full Profile
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        Get access to contact information, portfolio, and detailed work history
-                      </p>
-                      <Button 
-                        variant="cosmic" 
-                        className="w-full"
-                        onClick={handleUnlock}
-                      >
-                        <Unlock className="w-4 h-4 mr-2" />
-                        Unlock for $99
-                      </Button>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="text-center mb-4">
-                        <div className="w-16 h-16 bg-gradient-nebula rounded-full flex items-center justify-center mx-auto mb-2">
-                          <User className="w-8 h-8 text-white" />
-                        </div>
-                        <h3 className="font-semibold text-foreground">
-                          {talent.locked.name}
-                        </h3>
-                      </div>
-                      
-                      <div className="space-y-3">
-                        <Button variant="outline" className="w-full justify-start">
-                          <Mail className="w-4 h-4 mr-2" />
-                          {talent.locked.email}
-                        </Button>
-                        <Button variant="outline" className="w-full justify-start" asChild>
-                          <a href={talent.locked.portfolio} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            View Portfolio
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-                  )}
+                <CardHeader>
+                  <CardTitle>About</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {/* TODO: Connect to GET /api/candidates/:id/bio */}
+                  <div className="space-y-3 text-sm text-muted-foreground">
+                    <p>
+                      Experienced full-stack developer with a passion for creating scalable web applications. 
+                      Specializes in React ecosystem and modern JavaScript frameworks with strong emphasis on 
+                      performance optimization and user experience.
+                    </p>
+                    <p>
+                      Proven track record of leading development teams and mentoring junior developers. 
+                      Enjoys tackling complex technical challenges and staying current with emerging technologies 
+                      in the rapidly evolving web development landscape.
+                    </p>
+                    <p>
+                      Strong advocate for clean code practices, automated testing, and agile development 
+                      methodologies. Committed to delivering high-quality solutions that meet both business 
+                      objectives and technical excellence standards.
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
 
-            {/* Quick Actions */}
+            {/* Experience Highlights */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
+              <Card className="cosmic-card mb-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Building className="w-5 h-5" />
+                    Experience Highlights
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {/* TODO: Connect to GET /api/candidates/:id/experience */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between py-2 border-b border-border">
+                      <span className="font-medium text-foreground">TechCorp Inc.</span>
+                      <span className="text-sm text-muted-foreground">3 years</span>
+                    </div>
+                    <div className="flex items-center justify-between py-2 border-b border-border">
+                      <span className="font-medium text-foreground">StartupXYZ</span>
+                      <span className="text-sm text-muted-foreground">2 years</span>
+                    </div>
+                    <div className="flex items-center justify-between py-2 border-b border-border">
+                      <span className="font-medium text-foreground">Digital Agency</span>
+                      <span className="text-sm text-muted-foreground">1.5 years</span>
+                    </div>
+                    
+                    <div className="mt-4 pt-4 border-t border-border">
+                      <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        Technology Experience
+                      </h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>React/TypeScript</span>
+                          <span className="text-muted-foreground">5+ years</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Node.js</span>
+                          <span className="text-muted-foreground">4+ years</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Python</span>
+                          <span className="text-muted-foreground">3+ years</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Contact Actions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle>Quick Actions</CardTitle>
+                  <CardTitle>Contact Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
+                  {/* TODO: Connect to GET /api/candidates/:id/contact */}
                   <Button variant="outline" className="w-full justify-start">
-                    Save to Shortlist
+                    <Mail className="w-4 h-4 mr-2" />
+                    View Contact Info
                   </Button>
+                  {/* TODO: Connect to POST /api/interviews/schedule */}
                   <Button variant="outline" className="w-full justify-start">
-                    Request Interview
+                    Schedule Interview
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    Send Technical Test
-                  </Button>
+                  {/* TODO: Connect to POST /api/shortlist/add */}
                   <Button variant="cosmic" className="w-full">
-                    Start Hiring Process
+                    Add to Shortlist
                   </Button>
                 </CardContent>
               </Card>
