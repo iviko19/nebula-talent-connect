@@ -166,145 +166,16 @@ const EmployerDashboard = () => {
           </div>
         </motion.div>
 
-        {/* Stats Grid */}
-        <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          {[
-            { key: 'activeJobs', label: 'Active Jobs', value: stats.activeJobs, icon: Briefcase, color: 'text-primary', trend: '+12%' },
-            { key: 'candidates', label: 'Total Candidates', value: stats.candidates, icon: Users, color: 'text-accent', trend: '+8%' },
-            { key: 'interviews', label: 'This Week', value: stats.interviews, icon: Calendar, color: 'text-primary', trend: '+15%' },
-            { key: 'hires', label: 'Total Hires', value: stats.hires, icon: UserCheck, color: 'text-accent', trend: '+5%' }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.key}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-            >
-              <Card className="cosmic-card">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-muted-foreground">{stat.label}</p>
-                      <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                      <p className="text-xs text-primary">{stat.trend} vs last month</p>
-                    </div>
-                    <div className={`p-3 rounded-lg bg-gradient-nebula ${stat.color}`}>
-                      <stat.icon className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            <Tabs defaultValue="overview" className="space-y-6">
-              <TabsList className="grid w-full grid-cols-5">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="jobs">Jobs</TabsTrigger>
+            <Tabs defaultValue="candidates" className="space-y-6">
+              <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="candidates">Candidates</TabsTrigger>
                 <TabsTrigger value="shortlist">Shortlist</TabsTrigger>
-                <TabsTrigger value="analytics">Analytics</TabsTrigger>
               </TabsList>
 
-              {/* Overview Tab */}
-              <TabsContent value="overview" className="space-y-6">
-                {/* Quick Actions */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <Card className="cosmic-card">
-                    <CardHeader>
-                      <CardTitle>Quick Actions</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-2 gap-4">
-                        <Button variant="cosmic" className="h-20 flex-col gap-2" asChild>
-                          <Link to="/talent-search">
-                            <Search className="w-5 h-5" />
-                            <span>Search Talent</span>
-                          </Link>
-                        </Button>
-                        <Button variant="outline" className="h-20 flex-col gap-2">
-                          <Plus className="w-5 h-5" />
-                          <span>Post New Job</span>
-                        </Button>
-                        <Button variant="outline" className="h-20 flex-col gap-2">
-                          <Heart className="w-5 h-5" />
-                          <span>View Shortlist</span>
-                        </Button>
-                        <Button variant="outline" className="h-20 flex-col gap-2">
-                          <Download className="w-5 h-5" />
-                          <span>Export Reports</span>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-
-                {/* Recent Activity */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <Card className="cosmic-card">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <TrendingUp className="w-5 h-5" />
-                        Recent Candidates
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        {recentCandidates.map((candidate) => (
-                          <div key={candidate.id} className="flex items-center gap-4 p-3 rounded-lg bg-muted/50">
-                            <Avatar>
-                              <AvatarImage src={candidate.avatar} alt={candidate.name} />
-                              <AvatarFallback>{candidate.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                            </Avatar>
-                            <div className="flex-1">
-                              <p className="font-medium text-foreground">{candidate.name}</p>
-                              <p className="text-sm text-muted-foreground">{candidate.title}</p>
-                              <p className="text-xs text-muted-foreground">Applied for: {candidate.appliedFor}</p>
-                            </div>
-                            <div className="text-center">
-                              <div className="flex items-center gap-1 text-primary text-sm font-semibold">
-                                <Star className="w-4 h-4 fill-current" />
-                                <span>{candidate.score}</span>
-                              </div>
-                              <Badge variant={
-                                candidate.status === 'interview' ? 'default' :
-                                candidate.status === 'shortlisted' ? 'secondary' : 'outline'
-                              }>
-                                {candidate.status}
-                              </Badge>
-                            </div>
-                            <Button variant="outline" size="sm">
-                              View Profile
-                            </Button>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </TabsContent>
-
-              {/* Jobs Tab */}
-              <TabsContent value="jobs" className="space-y-6">
-                <JobManager />
-              </TabsContent>
 
               {/* Candidates Tab */}
               <TabsContent value="candidates" className="space-y-6">
@@ -375,69 +246,6 @@ const EmployerDashboard = () => {
               {/* Shortlist Tab */}
               <TabsContent value="shortlist" className="space-y-6">
                 <ShortlistManager />
-              </TabsContent>
-
-              {/* Analytics Tab */}
-              <TabsContent value="analytics" className="space-y-6">
-                <motion.div
-                  className="grid md:grid-cols-2 gap-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Card className="cosmic-card">
-                    <CardHeader>
-                      <CardTitle className="text-lg">Hiring Metrics</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span>Application Rate</span>
-                          <span className="font-semibold">{analytics.applicationTrend}%</span>
-                        </div>
-                        <Progress value={analytics.applicationTrend} className="h-2" />
-                      </div>
-                      <div>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span>Hire Success Rate</span>
-                          <span className="font-semibold">{analytics.hireRate}%</span>
-                        </div>
-                        <Progress value={analytics.hireRate} className="h-2" />
-                      </div>
-                      <div>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span>Avg. Candidate Score</span>
-                          <span className="font-semibold">{analytics.candidateScore}%</span>
-                        </div>
-                        <Progress value={analytics.candidateScore} className="h-2" />
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="cosmic-card">
-                    <CardHeader>
-                      <CardTitle className="text-lg">Performance Summary</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary mb-1">
-                          {analytics.timeToHire} days
-                        </div>
-                        <p className="text-sm text-muted-foreground">Average Time to Hire</p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4 text-center">
-                        <div>
-                          <div className="text-lg font-semibold text-foreground">156</div>
-                          <p className="text-xs text-muted-foreground">Total Candidates</p>
-                        </div>
-                        <div>
-                          <div className="text-lg font-semibold text-foreground">23</div>
-                          <p className="text-xs text-muted-foreground">In Pipeline</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
               </TabsContent>
             </Tabs>
           </div>
