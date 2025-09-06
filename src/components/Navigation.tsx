@@ -67,7 +67,7 @@ const Navigation = () => {
                   isActiveRoute(link.href)
                     ? 'text-primary'
                     : 'text-foreground/80 hover:text-primary'
-                }`}
+                } ${link.key === 'findTalent' ? 'animate-pulse text-primary shadow-glow' : ''}`}
               >
                 {link.label}
                 {isActiveRoute(link.href) && (
@@ -134,16 +134,7 @@ const Navigation = () => {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : (
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to="/login">Login</Link>
-                </Button>
-                <Button className="btn-cosmic" size="sm" asChild>
-                  <Link to="/signup">{t('hero.getStarted')}</Link>
-                </Button>
-              </div>
-            )}
+            ) : null}
           </div>
 
           {/* Mobile menu button */}
