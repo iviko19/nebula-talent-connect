@@ -155,70 +155,19 @@ const AdminDashboard = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-cosmic font-bold text-foreground">
-              Admin Dashboard
-            </h1>
-            <p className="text-muted-foreground">
-              Manage talent profiles, companies, and recruitment pipeline
-            </p>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
-            <Card className="cosmic-card">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">Total Candidates</p>
-                    <p className="text-2xl font-bold text-foreground">{talents.length}</p>
-                  </div>
-                  <User className="w-8 h-8 text-primary" />
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="cosmic-card">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">Active Companies</p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {companies.filter(c => c.status === 'Active').length}
-                    </p>
-                  </div>
-                  <Building className="w-8 h-8 text-primary" />
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="cosmic-card">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">Shortlisted</p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {companies.reduce((acc, company) => acc + company.shortlistedCandidates.length, 0)}
-                    </p>
-                  </div>
-                  <Heart className="w-8 h-8 text-primary" />
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="cosmic-card">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">Avg Score</p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {Math.round(talents.reduce((acc, t) => acc + t.overallScore, 0) / talents.length || 0)}
-                    </p>
-                  </div>
-                  <Star className="w-8 h-8 text-primary" />
-                </div>
-              </CardContent>
-            </Card>
+          <div className="mb-8 flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-cosmic font-bold text-foreground">
+                Admin Dashboard
+              </h1>
+              <p className="text-muted-foreground">
+                Manage talent profiles, companies, and recruitment pipeline
+              </p>
+            </div>
+            <Button variant="default" size="lg" className="flex items-center gap-2">
+              <span className="text-lg">+</span>
+              Add Candidate
+            </Button>
           </div>
 
           {/* Navigation Tabs */}
