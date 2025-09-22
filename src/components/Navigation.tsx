@@ -24,6 +24,12 @@ const Navigation = () => {
   // Check current route to determine navigation items
   const isTalentProfilePage = location.pathname.startsWith('/talent/');
   const isEmployerDashboard = location.pathname === '/employer-dashboard';
+  const isAdminDashboard = location.pathname === '/admin-dashboard';
+
+  // Hide navbar completely on admin dashboard
+  if (isAdminDashboard) {
+    return null;
+  }
 
   const getNavLinks = () => {
     if (isEmployerDashboard) {
@@ -73,32 +79,61 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.key}
-                to={link.href}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors ${
-                  isActiveRoute(link.href)
-                    ? 'text-primary'
-                    : 'text-foreground/80 hover:text-primary'
-                } ${link.key === 'findTalent' ? 'animate-pulse text-primary shadow-glow' : ''}`}
-              >
-                {link.label}
-                {isActiveRoute(link.href) && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                    layoutId="activeTab"
-                    initial={false}
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
+          {!isEmployerDashboard && (
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.key}
+                  to={link.href}
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors ${
+                    isActiveRoute(link.href)
+                      ? 'text-primary'
+                      : 'text-foreground/80 hover:text-primary'
+                  }`}
+                >
+                  {link.label}
+                  {isActiveRoute(link.href) && (
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                      layoutId="activeTab"
+                      initial={false}
+                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* Employer Dashboard Navigation on Right */}
+            {isEmployerDashboard && (
+              <div className="flex items-center space-x-6 mr-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.key}
+                    to={link.href}
+                    className={`relative px-3 py-2 text-sm font-medium transition-colors ${
+                      isActiveRoute(link.href)
+                        ? 'text-primary'
+                        : 'text-foreground/80 hover:text-primary'
+                    }`}
+                  >
+                    {link.label}
+                    {isActiveRoute(link.href) && (
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                        layoutId="activeTab"
+                        initial={false}
+                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                ))}
+              </div>
+            )}
+
             {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
