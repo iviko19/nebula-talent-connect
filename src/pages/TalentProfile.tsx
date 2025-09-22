@@ -107,16 +107,16 @@ const TalentProfile = () => {
           </Button>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="max-w-4xl mx-auto">
           {/* Main Content */}
-          <div className="lg:col-span-2">
+          <div className="space-y-6">
             {/* Profile Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="cosmic-card mb-6">
+              <Card className="cosmic-card">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
@@ -176,13 +176,102 @@ const TalentProfile = () => {
               </Card>
             </motion.div>
 
-            {/* Test Scores */}
+            {/* Professional Bio/Summary */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <Card className="cosmic-card mb-6">
+              <Card className="cosmic-card">
+                <CardHeader>
+                  <CardTitle>About</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {/* TODO: Connect to GET /api/candidates/:id/bio */}
+                  <div className="space-y-3 text-sm text-muted-foreground">
+                    <p>
+                      Experienced full-stack developer with a passion for creating scalable web applications. 
+                      Specializes in React ecosystem and modern JavaScript frameworks with strong emphasis on 
+                      performance optimization and user experience.
+                    </p>
+                    <p>
+                      Proven track record of leading development teams and mentoring junior developers. 
+                      Enjoys tackling complex technical challenges and staying current with emerging technologies 
+                      in the rapidly evolving web development landscape.
+                    </p>
+                    <p>
+                      Strong advocate for clean code practices, automated testing, and agile development 
+                      methodologies. Committed to delivering high-quality solutions that meet both business 
+                      objectives and technical excellence standards.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Experience Highlights - Only show if talent has experience */}
+            {talent.yearsExperience > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Card className="cosmic-card">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Building className="w-5 h-5" />
+                      Experience Highlights
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {/* TODO: Connect to GET /api/candidates/:id/experience */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between py-2 border-b border-border">
+                        <span className="font-medium text-foreground">TechCorp Inc.</span>
+                        <span className="text-sm text-muted-foreground">3 years</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2 border-b border-border">
+                        <span className="font-medium text-foreground">StartupXYZ</span>
+                        <span className="text-sm text-muted-foreground">2 years</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2 border-b border-border">
+                        <span className="font-medium text-foreground">Digital Agency</span>
+                        <span className="text-sm text-muted-foreground">1.5 years</span>
+                      </div>
+                      
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          Technology Experience
+                        </h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span>React/TypeScript</span>
+                            <span className="text-muted-foreground">5+ years</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Node.js</span>
+                            <span className="text-muted-foreground">4+ years</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Python</span>
+                            <span className="text-muted-foreground">3+ years</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            )}
+
+            {/* Test Scores */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Card className="cosmic-card">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Award className="w-5 h-5" />
@@ -217,143 +306,17 @@ const TalentProfile = () => {
               </Card>
             </motion.div>
 
-            {/* Recent Project */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Card className="cosmic-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Code className="w-5 h-5" />
-                    Recent Project
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    {talent.lastProject}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            {/* Professional Bio/Summary */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Card className="cosmic-card mb-6">
-                <CardHeader>
-                  <CardTitle>About</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* TODO: Connect to GET /api/candidates/:id/bio */}
-                  <div className="space-y-3 text-sm text-muted-foreground">
-                    <p>
-                      Experienced full-stack developer with a passion for creating scalable web applications. 
-                      Specializes in React ecosystem and modern JavaScript frameworks with strong emphasis on 
-                      performance optimization and user experience.
-                    </p>
-                    <p>
-                      Proven track record of leading development teams and mentoring junior developers. 
-                      Enjoys tackling complex technical challenges and staying current with emerging technologies 
-                      in the rapidly evolving web development landscape.
-                    </p>
-                    <p>
-                      Strong advocate for clean code practices, automated testing, and agile development 
-                      methodologies. Committed to delivering high-quality solutions that meet both business 
-                      objectives and technical excellence standards.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Experience Highlights */}
+            {/* Add to Shortlist Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex justify-center pt-4"
             >
-              <Card className="cosmic-card mb-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Building className="w-5 h-5" />
-                    Experience Highlights
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* TODO: Connect to GET /api/candidates/:id/experience */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between py-2 border-b border-border">
-                      <span className="font-medium text-foreground">TechCorp Inc.</span>
-                      <span className="text-sm text-muted-foreground">3 years</span>
-                    </div>
-                    <div className="flex items-center justify-between py-2 border-b border-border">
-                      <span className="font-medium text-foreground">StartupXYZ</span>
-                      <span className="text-sm text-muted-foreground">2 years</span>
-                    </div>
-                    <div className="flex items-center justify-between py-2 border-b border-border">
-                      <span className="font-medium text-foreground">Digital Agency</span>
-                      <span className="text-sm text-muted-foreground">1.5 years</span>
-                    </div>
-                    
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
-                        Technology Experience
-                      </h4>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span>React/TypeScript</span>
-                          <span className="text-muted-foreground">5+ years</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Node.js</span>
-                          <span className="text-muted-foreground">4+ years</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Python</span>
-                          <span className="text-muted-foreground">3+ years</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Contact Actions */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              <Card className="cosmic-card">
-                <CardHeader>
-                  <CardTitle>Contact Actions</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {/* TODO: Connect to GET /api/candidates/:id/contact */}
-                  <Button variant="outline" className="w-full justify-start">
-                    <Mail className="w-4 h-4 mr-2" />
-                    View Contact Info
-                  </Button>
-                  {/* TODO: Connect to POST /api/interviews/schedule */}
-                  <Button variant="outline" className="w-full justify-start">
-                    Schedule Interview
-                  </Button>
-                  {/* TODO: Connect to POST /api/shortlist/add */}
-                  <Button variant="cosmic" className="w-full">
-                    Add to Shortlist
-                  </Button>
-                </CardContent>
-              </Card>
+              {/* TODO: Connect to POST /api/shortlist/add */}
+              <Button variant="cosmic" size="lg" className="px-8">
+                Add to Shortlist
+              </Button>
             </motion.div>
           </div>
         </div>
