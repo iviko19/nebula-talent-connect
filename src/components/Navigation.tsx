@@ -21,13 +21,28 @@ const Navigation = () => {
   const isAuthenticated = false;
   const userType = 'employer'; // or 'talent'
 
-  const navLinks = [
-    { key: 'home', href: '/', label: t('nav.home') },
-    { key: 'findTalent', href: '/talent-search', label: t('nav.findTalent') },
-    { key: 'forCompanies', href: '/for-companies', label: t('nav.forCompanies') },
-    { key: 'forTalent', href: '/for-talent', label: t('nav.forTalent') },
-    { key: 'contact', href: '/contact', label: t('nav.contact') },
-  ];
+  // Check current route to determine navigation items
+  const isTalentProfilePage = location.pathname.startsWith('/talent/');
+  const isEmployerDashboard = location.pathname === '/employer-dashboard';
+
+  const getNavLinks = () => {
+    if (isEmployerDashboard) {
+      return [
+        { key: 'findTalent', href: '/talent-search', label: t('nav.findTalent') },
+        { key: 'contact', href: '/contact', label: t('nav.contact') },
+      ];
+    }
+    
+    return [
+      { key: 'home', href: '/', label: t('nav.home') },
+      { key: 'findTalent', href: '/talent-search', label: t('nav.findTalent') },
+      { key: 'forCompanies', href: '/for-companies', label: t('nav.forCompanies') },
+      { key: 'forTalent', href: '/for-talent', label: t('nav.forTalent') },
+      { key: 'contact', href: '/contact', label: t('nav.contact') },
+    ];
+  };
+
+  const navLinks = getNavLinks();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -134,7 +149,14 @@ const Navigation = () => {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : null}
+            ) : (
+              // Show login button for talent profile pages
+              isTalentProfilePage && (
+                <Button asChild>
+                  <Link to="/login">Login</Link>
+                </Button>
+              )
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -197,7 +219,8 @@ const Navigation = () => {
                     </button>
                   </>
                 ) : (
-                  <>
+                  // Show login button for talent profile pages in mobile menu
+                  isTalentProfilePage && (
                     <Link
                       to="/login"
                       className="block px-3 py-2 text-base font-medium text-foreground/80 hover:text-primary"
@@ -205,14 +228,7 @@ const Navigation = () => {
                     >
                       Login
                     </Link>
-                    <Link
-                      to="/signup"
-                      className="block px-3 py-2 text-base font-medium text-primary"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {t('hero.getStarted')}
-                    </Link>
-                  </>
+                  )
                 )}
               </div>
             </div>
