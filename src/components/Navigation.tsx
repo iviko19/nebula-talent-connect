@@ -25,6 +25,15 @@ const Navigation = () => {
   const isTalentProfilePage = location.pathname.startsWith('/talent/');
   const isEmployerDashboard = location.pathname === '/employer-dashboard';
   const isAdminDashboard = location.pathname === '/admin-dashboard';
+  
+  // Pages that should show login button
+  const showLoginButton = [
+    '/',
+    '/talent-search',
+    '/contact',
+    '/for-companies',
+    '/for-talent'
+  ].includes(location.pathname) || isTalentProfilePage;
 
   // Hide navbar completely on admin dashboard
   if (isAdminDashboard) {
@@ -185,8 +194,8 @@ const Navigation = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              // Show login button for talent profile pages
-              isTalentProfilePage && (
+              // Show login button for specified pages
+              showLoginButton && (
                 <Button asChild>
                   <Link to="/login">Login</Link>
                 </Button>
@@ -254,8 +263,8 @@ const Navigation = () => {
                     </button>
                   </>
                 ) : (
-                  // Show login button for talent profile pages in mobile menu
-                  isTalentProfilePage && (
+                  // Show login button for specified pages in mobile menu
+                  showLoginButton && (
                     <Link
                       to="/login"
                       className="block px-3 py-2 text-base font-medium text-foreground/80 hover:text-primary"

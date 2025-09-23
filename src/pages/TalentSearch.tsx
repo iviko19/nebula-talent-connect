@@ -79,58 +79,56 @@ const TalentSearch = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-4 gap-8">
-          {/* Filters Sidebar */}
-          <motion.div
-            className="lg:col-span-1"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <SearchFilters
-              filters={filters}
-              onFiltersChange={handleFiltersChange}
-              onSearch={handleSearch}
-              onReset={resetFilters}
-              isLoading={loading}
-            />
-          </motion.div>
+        {/* Filters at Top */}
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <SearchFilters
+            filters={filters}
+            onFiltersChange={handleFiltersChange}
+            onSearch={handleSearch}
+            onReset={resetFilters}
+            isLoading={loading}
+          />
+        </motion.div>
 
-          {/* Results */}
-          <div className="lg:col-span-3">
-            {loading ? (
-              <div className="flex justify-center py-12">
-                <LoadingSpinner size="lg" />
-              </div>
-            ) : error ? (
-              <EmptyState
-                icon={Users}
-                title="Error Loading Talents"
-                description={error}
-                actionLabel="Try Again"
-                onAction={loadTalents}
-              />
-            ) : talents.length === 0 ? (
-              <EmptyState
-                icon={Users}
-                title="No talents found"
-                description="Try adjusting your filters or search criteria"
-                actionLabel="Reset Filters"
-                onAction={resetFilters}
-              />
-            ) : (
-              <motion.div
-                className="grid md:grid-cols-2 gap-6"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                {talents.map((talent, index) => (
-                  <TalentCard key={talent.id} talent={talent} index={index} />
-                ))}
-              </motion.div>
-            )}
-          </div>
+        {/* Results */}
+        <div>
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <LoadingSpinner size="lg" />
+            </div>
+          ) : error ? (
+            <EmptyState
+              icon={Users}
+              title="Error Loading Talents"
+              description={error}
+              actionLabel="Try Again"
+              onAction={loadTalents}
+            />
+          ) : talents.length === 0 ? (
+            <EmptyState
+              icon={Users}
+              title="No talents found"
+              description="Try adjusting your filters or search criteria"
+              actionLabel="Reset Filters"
+              onAction={resetFilters}
+            />
+          ) : (
+            <motion.div
+              className="grid md:grid-cols-2 gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              {talents.map((talent, index) => (
+                <TalentCard key={talent.id} talent={talent} index={index} />
+              ))}
+            </motion.div>
+          )}
         </div>
       </div>
     </div>
