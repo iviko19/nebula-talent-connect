@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { 
   User, 
   Star, 
@@ -11,7 +12,8 @@ import {
   Phone, 
   Eye,
   Users,
-  Heart
+  Heart,
+  Plus
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -60,6 +62,7 @@ interface Company {
 }
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   // TODO: Replace with API calls
   const [talents] = useState<TalentProfile[]>([
     {
@@ -164,7 +167,7 @@ const AdminDashboard = () => {
                 Manage talent profiles, companies, and recruitment pipeline
               </p>
             </div>
-            <Button variant="default" size="lg" className="flex items-center gap-2">
+            <Button variant="default" size="lg" className="flex items-center gap-2" onClick={() => navigate('/add-candidate')}>
               <span className="text-lg">+</span>
               Add Candidate
             </Button>
@@ -174,7 +177,7 @@ const AdminDashboard = () => {
           <Tabs defaultValue="candidates" className="space-y-6">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="candidates">Candidates</TabsTrigger>
-              <TabsTrigger value="companies">Companies</TabsTrigger>
+              <TabsTrigger value="companies">Add Company</TabsTrigger>
               <TabsTrigger value="shortlisted">Shortlisted</TabsTrigger>
             </TabsList>
 
@@ -280,9 +283,9 @@ const AdminDashboard = () => {
                             }>
                               {talent.status}
                             </Badge>
-                            <Button variant="cosmic" size="sm">
+                            <Button variant="cosmic" size="sm" onClick={() => navigate(`/candidate/${talent.id}`)}>
                               <Eye className="w-4 h-4 mr-1" />
-                              View Profile
+                              Edit Profile
                             </Button>
                           </div>
                         </div>
@@ -293,8 +296,20 @@ const AdminDashboard = () => {
               </div>
             </TabsContent>
 
-            {/* Companies Tab */}
+            {/* Add Company Tab */}
             <TabsContent value="companies" className="space-y-6">
+              <div className="text-center py-12">
+                <Building className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Add New Company</h3>
+                <p className="text-muted-foreground mb-6">
+                  Register a new company to expand your client base
+                </p>
+                <Button onClick={() => navigate('/add-company')} size="lg">
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Company
+                </Button>
+              </div>
+              
               <Card className="cosmic-card">
                 <CardHeader>
                   <CardTitle>Registered Companies</CardTitle>
@@ -308,7 +323,7 @@ const AdminDashboard = () => {
                         <TableHead>Industry</TableHead>
                         <TableHead>Shortlisted</TableHead>
                         <TableHead>Status</TableHead>
-                        <TableHead>Joined</TableHead>
+                        <TableHead>Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -344,7 +359,9 @@ const AdminDashboard = () => {
                             </Badge>
                           </TableCell>
                           <TableCell>
-                            <span className="text-sm text-muted-foreground">{company.joinedDate}</span>
+                            <Button variant="outline" size="sm">
+                              Edit
+                            </Button>
                           </TableCell>
                         </TableRow>
                       ))}

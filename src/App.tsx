@@ -19,6 +19,8 @@ import ForTalent from "./pages/ForTalent";
 import Contact from "./pages/Contact";
 import EmployerDashboard from "./pages/EmployerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import AddCandidate from "./pages/AddCandidate";
+import AddCompany from "./pages/AddCompany";
 import JoinAsTalent from "./pages/JoinAsTalent";
 
 import ContractPage from "./pages/ContractPage";
@@ -47,6 +49,9 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/employer-dashboard" element={<EmployerDashboard />} />
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
+              <Route path="/add-candidate" element={<AddCandidate />} />
+              <Route path="/add-company" element={<AddCompany />} />
+              <Route path="/candidate/:id" element={<AddCandidate />} />
               <Route path="/admin-login" element={<Login />} />
               <Route path="/join-as-talent" element={<JoinAsTalent />} />
               
