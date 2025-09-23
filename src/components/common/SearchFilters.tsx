@@ -25,31 +25,24 @@ export const SearchFilters = ({
   };
 
   return (
-    <Card className="cosmic-card sticky top-24">
+    <Card className="cosmic-card shadow-lg border-0 bg-gradient-to-r from-background via-background to-background/95">
       <CardContent className="p-6">
-        <div className="flex items-center gap-2 mb-6">
-          <Filter className="w-5 h-5 text-primary" />
-          <h2 className="text-lg font-semibold">Filters</h2>
-        </div>
-
-        <div className="space-y-4">
+        <div className="flex flex-wrap items-center gap-4 lg:gap-6">
           {/* Skills */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Skills</label>
+          <div className="flex-1 min-w-48">
             <Input
-              placeholder="React, Python, AI/ML..."
+              placeholder="Skills (React, Python, AI/ML...)"
               value={filters.skills}
               onChange={(e) => updateFilter('skills', e.target.value)}
-              className="focus-outline"
+              className="h-9 focus-outline text-sm bg-background/80"
             />
           </div>
 
           {/* Seniority */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Seniority Level</label>
+          <div className="min-w-36">
             <Select value={filters.seniority} onValueChange={(value) => updateFilter('seniority', value)}>
-              <SelectTrigger className="focus-outline">
-                <SelectValue placeholder="Any level" />
+              <SelectTrigger className="h-9 focus-outline text-sm bg-background/80">
+                <SelectValue placeholder="Seniority" />
               </SelectTrigger>
               <SelectContent className="z-50 bg-popover border shadow-lg">
                 <SelectItem value="any">Any level</SelectItem>
@@ -63,11 +56,10 @@ export const SearchFilters = ({
           </div>
 
           {/* Location */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Location</label>
+          <div className="min-w-32">
             <Select value={filters.location} onValueChange={(value) => updateFilter('location', value)}>
-              <SelectTrigger className="focus-outline">
-                <SelectValue placeholder="Any location" />
+              <SelectTrigger className="h-9 focus-outline text-sm bg-background/80">
+                <SelectValue placeholder="Location" />
               </SelectTrigger>
               <SelectContent className="z-50 bg-popover border shadow-lg">
                 <SelectItem value="any">Any location</SelectItem>
@@ -80,30 +72,26 @@ export const SearchFilters = ({
           </div>
 
           {/* Salary Range */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Salary Range (USD)</label>
-            <div className="grid grid-cols-2 gap-2">
-              <Input
-                placeholder="Min"
-                value={filters.minSalary}
-                onChange={(e) => updateFilter('minSalary', e.target.value)}
-                className="focus-outline"
-              />
-              <Input
-                placeholder="Max"
-                value={filters.maxSalary}
-                onChange={(e) => updateFilter('maxSalary', e.target.value)}
-                className="focus-outline"
-              />
-            </div>
+          <div className="flex gap-2 min-w-32">
+            <Input
+              placeholder="Min $"
+              value={filters.minSalary}
+              onChange={(e) => updateFilter('minSalary', e.target.value)}
+              className="h-9 focus-outline text-sm w-20 bg-background/80"
+            />
+            <Input
+              placeholder="Max $"
+              value={filters.maxSalary}
+              onChange={(e) => updateFilter('maxSalary', e.target.value)}
+              className="h-9 focus-outline text-sm w-20 bg-background/80"
+            />
           </div>
 
           {/* Availability */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Availability</label>
+          <div className="min-w-36">
             <Select value={filters.availability} onValueChange={(value) => updateFilter('availability', value)}>
-              <SelectTrigger className="focus-outline">
-                <SelectValue placeholder="Any" />
+              <SelectTrigger className="h-9 focus-outline text-sm bg-background/80">
+                <SelectValue placeholder="Availability" />
               </SelectTrigger>
               <SelectContent className="z-50 bg-popover border shadow-lg">
                 <SelectItem value="any">Any</SelectItem>
@@ -114,23 +102,25 @@ export const SearchFilters = ({
             </Select>
           </div>
 
-          <div className="flex flex-col gap-2 pt-4">
+          {/* Action Buttons */}
+          <div className="flex gap-2 ml-auto">
             <Button 
               onClick={onSearch} 
-              className="w-full focus-outline" 
+              size="sm"
+              className="h-9 px-4 focus-outline bg-primary hover:bg-primary/90" 
               disabled={isLoading}
             >
               <Search className="w-4 h-4 mr-2" />
               {isLoading ? 'Searching...' : 'Search'}
             </Button>
             <Button 
-              variant="ghost" 
+              variant="outline" 
+              size="sm"
               onClick={onReset} 
-              className="w-full focus-outline"
+              className="h-9 px-3 focus-outline"
               disabled={isLoading}
             >
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Reset Filters
+              <RotateCcw className="w-4 h-4" />
             </Button>
           </div>
         </div>
