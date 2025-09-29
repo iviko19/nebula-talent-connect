@@ -10,6 +10,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
 
+// =================================================================
+// SHORTLIST MANAGER - API INTEGRATION POINTS
+// =================================================================
+// Required API endpoints:
+// GET    /api/shortlist/employer/:employerId - Fetch shortlisted candidates
+// POST   /api/tests/send - Send test request to candidate
+// GET    /api/tests/:testId/status - Check test completion status
+// POST   /api/contracts/create - Create contract for hired candidate
+// PUT    /api/shortlist/:candidateId/remove - Remove from shortlist
+// =================================================================
+
 interface ShortlistedCandidate {
   id: string;
   candidateNumber: string;
@@ -30,6 +41,17 @@ interface ShortlistedCandidate {
 
 const ShortlistManager = () => {
   const { toast } = useToast();
+  
+  // TODO: Load shortlisted candidates from API on component mount
+  // useEffect(() => {
+  //   const loadShortlistedCandidates = async () => {
+  //     const response = await fetch(`/api/shortlist/employer/${currentUserId}`);
+  //     const candidates = await response.json();
+  //     setShortlistedCandidates(candidates.data);
+  //   };
+  //   loadShortlistedCandidates();
+  // }, []);
+  
   const [shortlistedCandidates] = useState<ShortlistedCandidate[]>([
     {
       id: '1',
@@ -111,10 +133,27 @@ const ShortlistManager = () => {
     setTestDialogOpen(true);
   };
 
-  const handleSubmitTestRequest = () => {
+  const handleSubmitTestRequest = async () => {
     if (!selectedCandidate) return;
     
-    // Here you would send the test request to your backend
+    // TODO: Replace with API call to send test
+    // const response = await fetch('/api/tests/send', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     candidateId: selectedCandidate.id,
+    //     testTitle: testRequest.title,
+    //     description: testRequest.description,
+    //     duration: testRequest.duration,
+    //     instructions: testRequest.instructions
+    //   })
+    // });
+    // 
+    // if (response.ok) {
+    //   // Update candidate test status to 'sent'
+    //   // Refresh shortlisted candidates list
+    // }
+    
     toast({
       title: "Test Request Sent",
       description: `Test request sent to ${selectedCandidate.candidateNumber}`,
@@ -126,7 +165,18 @@ const ShortlistManager = () => {
   };
 
   const handleProceedToContract = (candidate: ShortlistedCandidate) => {
-    // Navigate to contract page with candidate details
+    // TODO: This should create a contract draft and navigate to contract page
+    // const createContract = async () => {
+    //   const response = await fetch('/api/contracts/create', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ candidateId: candidate.id })
+    //   });
+    //   const contract = await response.json();
+    //   window.location.href = `/contract/${contract.id}`;
+    // };
+    // createContract();
+    
     window.location.href = `/contract?candidate=${candidate.id}`;
   };
 

@@ -23,12 +23,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-// API endpoints to implement:
-// GET /api/admin/talents - Fetch all registered talent
-// GET /api/admin/companies - Fetch all registered companies
-// GET /api/admin/shortlisted - Fetch all shortlisted candidates
-// PUT /api/admin/talents/:id - Update talent profile
+// =================================================================
+// ADMIN DASHBOARD - API INTEGRATION POINTS
+// =================================================================
+// Required API endpoints:
+// GET    /api/admin/talents - Fetch all registered talents with full details
+// GET    /api/admin/companies - Fetch all registered companies  
+// GET    /api/admin/shortlisted - Fetch shortlisted candidates by company
+// PUT    /api/admin/talents/:id - Update talent profile
 // DELETE /api/admin/talents/:id - Delete talent profile
+// PUT    /api/admin/companies/:id - Update company details
+// DELETE /api/admin/companies/:id - Delete company
+// =================================================================
 
 interface TalentProfile {
   id: string;
@@ -63,7 +69,12 @@ interface Company {
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  // TODO: Replace with API calls
+  // TODO: Replace with API calls - Load from /api/admin/talents
+  // useEffect(() => {
+  //   fetchAdminTalents().then(setTalents);
+  //   fetchAdminCompanies().then(setCompanies);
+  // }, []);
+  
   const [talents] = useState<TalentProfile[]>([
     {
       id: '1',

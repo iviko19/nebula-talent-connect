@@ -34,10 +34,21 @@ const AddCompany = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     // TODO: Implement API call to save company
-    console.log('Saving company:', formData);
+    // const response = await fetch('/api/companies', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(formData)
+    // });
+    // 
+    // if (response.ok) {
+    //   toast({ title: "Success", description: "Company added successfully" });
+    //   navigate('/admin-dashboard');
+    // }
+    
     toast({
       title: "Company Added",
       description: "New company has been successfully added to the system.",

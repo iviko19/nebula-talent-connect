@@ -11,6 +11,18 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/components/ui/use-toast';
 
+// =================================================================
+// JOB MANAGER - API INTEGRATION POINTS
+// =================================================================
+// Required API endpoints:
+// GET    /api/jobs/employer/:employerId - Fetch jobs for logged-in employer
+// POST   /api/jobs - Create new job posting
+// PUT    /api/jobs/:id - Update existing job
+// DELETE /api/jobs/:id - Delete job posting
+// GET    /api/jobs/:id/applications - Get job applications
+// PUT    /api/jobs/:id/status - Toggle job active/paused status
+// =================================================================
+
 interface Job {
   id: string;
   title: string;
@@ -30,6 +42,17 @@ interface Job {
 
 const JobManager = () => {
   const { toast } = useToast();
+  
+  // TODO: Load jobs from API on component mount
+  // useEffect(() => {
+  //   const loadJobs = async () => {
+  //     const response = await fetch(`/api/jobs/employer/${currentUserId}`);
+  //     const jobsData = await response.json();
+  //     setJobs(jobsData.data);
+  //   };
+  //   loadJobs();
+  // }, []);
+  
   const [jobs, setJobs] = useState<Job[]>([
     {
       id: '1',
@@ -117,16 +140,34 @@ const JobManager = () => {
     setJobDialogOpen(true);
   };
 
-  const handleSaveJob = () => {
+  const handleSaveJob = async () => {
+    // TODO: Replace with API call
+    // const jobData = { ...newJob };
+    // const url = editingJob ? `/api/jobs/${editingJob.id}` : '/api/jobs';
+    // const method = editingJob ? 'PUT' : 'POST';
+    // 
+    // const response = await fetch(url, {
+    //   method,
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(jobData)
+    // });
+    // 
+    // if (response.ok) {
+    //   const savedJob = await response.json();
+    //   if (editingJob) {
+    //     setJobs(jobs.map(job => job.id === editingJob.id ? savedJob : job));
+    //   } else {
+    //     setJobs([...jobs, savedJob]);
+    //   }
+    // }
+    
     if (editingJob) {
-      // Update existing job
       setJobs(jobs.map(job => job.id === editingJob.id ? { ...job, ...newJob } as Job : job));
       toast({
         title: "Job Updated",
         description: `${newJob.title} has been updated successfully.`,
       });
     } else {
-      // Create new job
       const job: Job = {
         ...newJob,
         id: Date.now().toString(),
@@ -144,7 +185,8 @@ const JobManager = () => {
     setJobDialogOpen(false);
   };
 
-  const handleToggleStatus = (jobId: string) => {
+  const handleToggleStatus = async (jobId: string) => {
+    // TODO: Replace with API call to /api/jobs/:id/status
     setJobs(jobs.map(job => 
       job.id === jobId 
         ? { ...job, status: job.status === 'active' ? 'paused' : 'active' }
@@ -152,7 +194,8 @@ const JobManager = () => {
     ));
   };
 
-  const handleDeleteJob = (jobId: string) => {
+  const handleDeleteJob = async (jobId: string) => {
+    // TODO: Replace with API call to DELETE /api/jobs/:id
     setJobs(jobs.filter(job => job.id !== jobId));
     toast({
       title: "Job Deleted",

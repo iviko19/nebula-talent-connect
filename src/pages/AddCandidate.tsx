@@ -45,8 +45,16 @@ const AddCandidate = () => {
   // Load candidate data if editing
   useEffect(() => {
     if (isEditing && id) {
-      // TODO: Load candidate data from API
-      // For now, simulate loading existing data
+      // TODO: Implement API call to load candidate data
+      // const loadCandidate = async () => {
+      //   const response = await fetch(`/api/talents/${id}`);
+      //   const candidateData = await response.json();
+      //   setFormData(candidateData);
+      //   setSkills(candidateData.skills);
+      // };
+      // loadCandidate();
+      
+      // MOCK DATA - Remove when backend is ready
       const mockCandidate = {
         realName: 'John Smith',
         email: 'john.smith@email.com',
@@ -90,10 +98,25 @@ const AddCandidate = () => {
     setSkills(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     // TODO: Implement API call to save/update candidate
-    console.log(isEditing ? 'Updating candidate:' : 'Saving candidate:', { ...formData, skills });
+    // const candidateData = { ...formData, skills };
+    // const url = isEditing ? `/api/talents/${id}` : '/api/talents';
+    // const method = isEditing ? 'PUT' : 'POST';
+    // 
+    // const response = await fetch(url, {
+    //   method,
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(candidateData)
+    // });
+    // 
+    // if (response.ok) {
+    //   toast({ title: "Success", description: "Candidate saved successfully" });
+    //   navigate('/admin-dashboard');
+    // }
+    
     toast({
       title: isEditing ? "Candidate Updated" : "Candidate Added",
       description: isEditing 

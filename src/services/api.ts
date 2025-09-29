@@ -1,7 +1,60 @@
-// Mock API service - Replace with real backend calls later
-// This file contains all placeholder functions for backend integration
+// =================================================================
+// API SERVICE - BACKEND INTEGRATION POINTS
+// =================================================================
+// Replace all mock implementations below with real backend API calls
+// Base URL should be: process.env.VITE_API_BASE_URL or '/api'
 
 import { Talent, Company, APIResponse, TalentFilters, DashboardStats, TestResult, JobOffer } from '@/types';
+
+// =================================================================
+// API ENDPOINTS TO IMPLEMENT:
+// =================================================================
+// Authentication:
+// POST   /api/auth/login
+// POST   /api/auth/signup
+// POST   /api/auth/logout
+// GET    /api/auth/me
+
+// Talents:
+// GET    /api/talents (with query filters)
+// GET    /api/talents/:id
+// POST   /api/talents (create new)
+// PUT    /api/talents/:id (update)
+// DELETE /api/talents/:id
+
+// Companies:
+// GET    /api/companies
+// GET    /api/companies/:id  
+// POST   /api/companies (create new)
+// PUT    /api/companies/:id (update)
+// DELETE /api/companies/:id
+
+// Admin:
+// GET    /api/admin/dashboard-stats
+// GET    /api/admin/talents (all talents for admin)
+// GET    /api/admin/companies (all companies for admin)
+// GET    /api/admin/shortlisted
+
+// Tests & Assessment:
+// POST   /api/tests/send (send test to candidate)
+// GET    /api/tests/:id/results
+// GET    /api/tests/candidate/:candidateId
+
+// Jobs:
+// GET    /api/jobs/employer/:employerId
+// POST   /api/jobs (create job)
+// PUT    /api/jobs/:id (update job)
+// DELETE /api/jobs/:id
+
+// Payments & Profile Unlocking:
+// POST   /api/payments/unlock-profile
+// GET    /api/payments/history
+
+// Contracts:
+// POST   /api/contracts (create contract)
+// GET    /api/contracts/:id
+// PUT    /api/contracts/:id/sign
+// =================================================================
 
 // Mock data
 export const mockTalents: Talent[] = [
@@ -86,11 +139,16 @@ export const mockStats = {
 
 // API Functions (currently return mock data)
 export const fetchTalents = async (filters: Partial<TalentFilters> = {}): Promise<APIResponse<Talent[]>> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 800));
-  
   // TODO: Replace with real API call
-  // return fetch('/api/talents', { method: 'POST', body: JSON.stringify(filters) })
+  // const response = await fetch('/api/talents', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(filters)
+  // });
+  // return response.json();
+  
+  // MOCK IMPLEMENTATION - Remove when backend is ready
+  await new Promise(resolve => setTimeout(resolve, 800));
   
   // Simple filtering logic for demo
   let filteredTalents = [...mockTalents];
