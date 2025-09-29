@@ -158,39 +158,37 @@ const AdminDashboard = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Header */}
-          <div className="mb-8 flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-cosmic font-bold text-foreground">
-                Admin Dashboard
-              </h1>
-              <p className="text-muted-foreground">
-                Manage talent profiles, companies, and recruitment pipeline
-              </p>
-            </div>
-            <Button variant="default" size="lg" className="flex items-center gap-2" onClick={() => navigate('/add-candidate')}>
-              <span className="text-lg">+</span>
-              Add Candidate
-            </Button>
+          <div className="mb-8">
+            <h1 className="text-3xl font-cosmic font-bold text-foreground">
+              Admin Dashboard
+            </h1>
+            <p className="text-muted-foreground">
+              Manage talent profiles, companies, and recruitment pipeline
+            </p>
           </div>
 
           {/* Navigation Tabs */}
           <Tabs defaultValue="candidates" className="space-y-6">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="candidates">Candidates</TabsTrigger>
-              <TabsTrigger value="companies">Add Company</TabsTrigger>
+              <TabsTrigger value="companies">Companies</TabsTrigger>
               <TabsTrigger value="shortlisted">Shortlisted</TabsTrigger>
             </TabsList>
 
             {/* Candidates Tab */}
             <TabsContent value="candidates" className="space-y-6">
-              {/* Search */}
-              <div className="mb-6">
+              {/* Search and Add Button */}
+              <div className="flex gap-4 items-center mb-6">
                 <Input
                   placeholder="Search candidates by name, skills, location..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="max-w-md"
+                  className="flex-1"
                 />
+                <Button variant="default" size="default" className="flex items-center gap-2" onClick={() => navigate('/add-candidate')}>
+                  <Plus className="w-4 h-4" />
+                  Add Candidate
+                </Button>
               </div>
 
               {/* Talent List */}
@@ -296,16 +294,16 @@ const AdminDashboard = () => {
               </div>
             </TabsContent>
 
-            {/* Add Company Tab */}
+            {/* Companies Tab */}
             <TabsContent value="companies" className="space-y-6">
-              <div className="text-center py-12">
-                <Building className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Add New Company</h3>
-                <p className="text-muted-foreground mb-6">
-                  Register a new company to expand your client base
-                </p>
-                <Button onClick={() => navigate('/add-company')} size="lg">
-                  <Plus className="w-4 h-4 mr-2" />
+              {/* Search and Add Button */}
+              <div className="flex gap-4 items-center mb-6">
+                <Input
+                  placeholder="Search companies by name, industry..."
+                  className="flex-1"
+                />
+                <Button variant="default" size="default" className="flex items-center gap-2" onClick={() => navigate('/add-company')}>
+                  <Plus className="w-4 h-4" />
                   Add Company
                 </Button>
               </div>
